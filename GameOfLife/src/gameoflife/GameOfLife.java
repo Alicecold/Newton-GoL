@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package gameoflife;
-
 /**
  *
  * @author alicecold
@@ -15,6 +14,9 @@ public class GameOfLife {
      * @param args the command line arguments
      */
     public static void main(String[] args)  {
+        gridUI ui = new gridUI();
+        
+        ui.show();
         
     }
     
