@@ -14,7 +14,6 @@ public class GUIGrid extends javax.swing.JFrame {
     
     boolean play = true;
     
-    
     public GUIGrid() {
         initComponents();
     }
@@ -97,7 +96,7 @@ public class GUIGrid extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(playButton)
+                        .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(clearButton)
                         .addGap(40, 40, 40)
@@ -106,7 +105,7 @@ public class GUIGrid extends javax.swing.JFrame {
                                 .addGap(80, 80, 80)
                                 .addComponent(speedLabel))
                             .addComponent(speedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deadCellLabel)
@@ -146,6 +145,8 @@ public class GUIGrid extends javax.swing.JFrame {
                                     .addComponent(livingCellField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
         );
 
+        playButton.getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,10 +159,14 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_livingCellFieldActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        if (playButton.getText().equals("Play"))
+
+        if (playButton.getText().equals("Play")){
             playButton.setText("Pause");
-        else
+            play = true;
+        }else{
             playButton.setText("Play");
+            play = false;
+        }
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
