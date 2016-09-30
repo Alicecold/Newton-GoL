@@ -211,7 +211,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Hej");
+        JOptionPane.showMessageDialog(null, "Mjau!~");
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     /**
