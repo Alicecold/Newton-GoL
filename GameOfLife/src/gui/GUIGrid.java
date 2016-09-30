@@ -14,7 +14,7 @@ public class GUIGrid extends javax.swing.JFrame {
     boolean play = true;
     private static final Color ALIVE_COLOR = new Color(163,232,176);
     private static final Color DEAD_COLOR = new Color(216, 209,232);
-    int width = 900, heigth = 430;
+    int width = 100, height = 50;
     Graphics offScreenGraph;
     Image offScImg;
     
@@ -27,17 +27,26 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
-        offScImg = createImage(gridPanel.getWidth(), gridPanel.getHeight());
-        offScreenGraph = offScImg.getGraphics();
+        
         
     }
     
     private void repain(){
         offScreenGraph.setColor(DEAD_COLOR);
         offScreenGraph.fillRect(5, 5, gridPanel.getWidth(), gridPanel.getHeight());
+        offScreenGraph.setColor(gridPanel.getBackground());
+        for (int i = 1; i < height; i++){
+            int y = i * gridPanel.getHeight() / height;
+            offScreenGraph.drawLine(0, y, gridPanel.getWidth(), y);
+        }
+        for (int j = 1; j < width; j++){
+            int x = j * gridPanel.getWidth() / width;
+            offScreenGraph.drawLine(x, 0, x, gridPanel.getHeight());
+        }
         
         
         
+        gridPanel.getGraphics().drawImage(offScImg, 0, 0, gridPanel);
     }
     
 
@@ -59,6 +68,16 @@ public class GUIGrid extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         gridPanel.setBackground(new java.awt.Color(153, 153, 153));
+        gridPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gridPanelMouseClicked(evt);
+            }
+        });
+        gridPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                gridPanelComponentResized(evt);
+            }
+        });
 
         javax.swing.GroupLayout gridPanelLayout = new javax.swing.GroupLayout(gridPanel);
         gridPanel.setLayout(gridPanelLayout);
@@ -220,6 +239,16 @@ public class GUIGrid extends javax.swing.JFrame {
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
         JOptionPane.showMessageDialog(null, "Mjau!~");
     }//GEN-LAST:event_settingsButtonActionPerformed
+
+    private void gridPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridPanelMouseClicked
+        repain();
+    }//GEN-LAST:event_gridPanelMouseClicked
+
+    private void gridPanelComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_gridPanelComponentResized
+        offScImg = createImage(gridPanel.getWidth(), gridPanel.getHeight());
+        offScreenGraph = offScImg.getGraphics();
+        repain();
+    }//GEN-LAST:event_gridPanelComponentResized
 
     /**
      * @param args the command line arguments
