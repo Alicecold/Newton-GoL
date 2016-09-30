@@ -14,7 +14,7 @@ public class GUIGrid extends javax.swing.JFrame {
     boolean play = true;
     private static final Color ALIVE_COLOR = new Color(163,232,176);
     private static final Color DEAD_COLOR = new Color(216, 209,232);
-    int width = 200, height = 100;
+    int width = 100, height = 50;
     Graphics offScreenGraph;
     Image offScImg;
     boolean[][] currentCell = new boolean[height][width];
