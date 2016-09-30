@@ -25,12 +25,6 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
-        
-        
-        settingsButton.setOpaque(false);
-        settingsButton.setContentAreaFilled(false);
-        settingsButton.setBorderPainted(false);
-        settingsButton.setFocusPainted(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -46,7 +40,7 @@ public class GUIGrid extends javax.swing.JFrame {
         livingCellLabel = new javax.swing.JLabel();
         playButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
-        settingsButton = new javax.swing.JButton();
+        Settings = new javax.swing.JButton(new ImageIcon("cogs.png"));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,11 +54,7 @@ public class GUIGrid extends javax.swing.JFrame {
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGap(0, 355, Short.MAX_VALUE)
-=======
-            .addGap(0, 351, Short.MAX_VALUE)
->>>>>>> parent of 7e85c2a... Cog button!!! :D
+            .addGap(0, 346, Short.MAX_VALUE)
         );
 
         speedLabel.setText("Speed");
@@ -104,17 +94,12 @@ public class GUIGrid extends javax.swing.JFrame {
             }
         });
 
-<<<<<<< HEAD
-        settingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/cogs.png"))); // NOI18N
-        settingsButton.setToolTipText("");
-        settingsButton.addActionListener(new java.awt.event.ActionListener() {
-=======
+        Settings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/cogs.png"))); // NOI18N
         Settings.setText("Settings");
         Settings.setToolTipText("");
         Settings.addActionListener(new java.awt.event.ActionListener() {
->>>>>>> parent of 7e85c2a... Cog button!!! :D
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingsButtonActionPerformed(evt);
+                SettingsActionPerformed(evt);
             }
         });
 
@@ -147,11 +132,11 @@ public class GUIGrid extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(livingCellLabel)
-                                .addGap(125, 125, 125))
+                                .addGap(187, 187, 187))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(settingsButton))))
+                                .addComponent(Settings))))
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -160,6 +145,7 @@ public class GUIGrid extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -171,18 +157,10 @@ public class GUIGrid extends javax.swing.JFrame {
                             .addComponent(livingCellLabel)
                             .addComponent(deadCellLabel))
                         .addGap(10, 10, 10)
-<<<<<<< HEAD
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(deadCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-=======
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(deadCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Settings)))
->>>>>>> parent of 7e85c2a... Cog button!!! :D
+                            .addComponent(Settings, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(speedLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -222,9 +200,9 @@ public class GUIGrid extends javax.swing.JFrame {
         
     }//GEN-LAST:event_playButtonMouseClicked
 
-    private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
+    private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
 
-    }//GEN-LAST:event_settingsButtonActionPerformed
+    }//GEN-LAST:event_SettingsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +225,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Settings;
     private javax.swing.JButton clearButton;
     private javax.swing.JTextField deadCellField;
     private javax.swing.JLabel deadCellLabel;
@@ -254,7 +233,6 @@ public class GUIGrid extends javax.swing.JFrame {
     private javax.swing.JLabel livingCellLabel;
     private javax.swing.JPanel panel;
     private javax.swing.JButton playButton;
-    private javax.swing.JButton settingsButton;
     private javax.swing.JLabel speedLabel;
     private javax.swing.JSlider speedSlider;
     // End of variables declaration//GEN-END:variables

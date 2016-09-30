@@ -53,12 +53,12 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="livingCellLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="livingCellField" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="settingsButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="Settings" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -73,6 +73,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panel" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -87,19 +88,10 @@
                           <Component id="deadCellLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="settingsButton" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="livingCellField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="deadCellField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-=======
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="livingCellField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="deadCellField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Settings" alignment="3" min="-2" max="-2" attributes="0"/>
->>>>>>> parent of 7e85c2a... Cog button!!! :D
+                          <Component id="Settings" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -129,11 +121,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-              <EmptySpace min="0" pref="355" max="32767" attributes="0"/>
-=======
-              <EmptySpace min="0" pref="351" max="32767" attributes="0"/>
->>>>>>> parent of 7e85c2a... Cog button!!! :D
+              <EmptySpace min="0" pref="346" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -185,20 +173,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="settingsButton">
+    <Component class="javax.swing.JButton" name="Settings">
       <Properties>
-<<<<<<< HEAD
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/gui/cogs.png"/>
         </Property>
-=======
         <Property name="text" type="java.lang.String" value="Settings"/>
->>>>>>> parent of 7e85c2a... Cog button!!! :D
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingsButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SettingsActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(new ImageIcon(&quot;cogs.png&quot;))"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
