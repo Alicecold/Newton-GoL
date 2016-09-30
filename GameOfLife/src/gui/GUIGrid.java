@@ -60,7 +60,11 @@ public class GUIGrid extends javax.swing.JFrame {
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 355, Short.MAX_VALUE)
+=======
+            .addGap(0, 351, Short.MAX_VALUE)
+>>>>>>> parent of 7e85c2a... Cog button!!! :D
         );
 
         speedLabel.setText("Speed");
@@ -100,9 +104,15 @@ public class GUIGrid extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         settingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/cogs.png"))); // NOI18N
         settingsButton.setToolTipText("");
         settingsButton.addActionListener(new java.awt.event.ActionListener() {
+=======
+        Settings.setText("Settings");
+        Settings.setToolTipText("");
+        Settings.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> parent of 7e85c2a... Cog button!!! :D
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settingsButtonActionPerformed(evt);
             }
@@ -137,7 +147,7 @@ public class GUIGrid extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(livingCellLabel)
-                                .addGap(187, 187, 187))
+                                .addGap(125, 125, 125))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,11 +171,18 @@ public class GUIGrid extends javax.swing.JFrame {
                             .addComponent(livingCellLabel)
                             .addComponent(deadCellLabel))
                         .addGap(10, 10, 10)
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(deadCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+=======
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deadCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Settings)))
+>>>>>>> parent of 7e85c2a... Cog button!!! :D
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(speedLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
