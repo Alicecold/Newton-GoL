@@ -14,6 +14,7 @@ public class GUIGrid extends javax.swing.JFrame {
     boolean play = true;
     private static final Color ALIVE_COLOR = new Color(163,232,176);
     private static final Color DEAD_COLOR = new Color(216, 209,232);
+    int width = 900, heigth = 430;
     Graphics offScreenGraph;
     Image offScImg;
     
@@ -26,11 +27,17 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
+        offScImg = createImage(gridPanel.getWidth(), gridPanel.getHeight());
+        offScreenGraph = offScImg.getGraphics();
         
     }
     
     private void repain(){
-        offScreenGraph.fillRect(WIDTH, WIDTH, WIDTH, WIDTH);
+        offScreenGraph.setColor(DEAD_COLOR);
+        offScreenGraph.fillRect(5, 5, gridPanel.getWidth(), gridPanel.getHeight());
+        
+        
+        
     }
     
 
@@ -38,7 +45,7 @@ public class GUIGrid extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        gridPanel = new javax.swing.JPanel();
         speedSlider = new javax.swing.JSlider();
         speedLabel = new javax.swing.JLabel();
         deadCellField = new javax.swing.JTextField();
@@ -51,16 +58,16 @@ public class GUIGrid extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panel.setBackground(new java.awt.Color(153, 153, 153));
+        gridPanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout gridPanelLayout = new javax.swing.GroupLayout(gridPanel);
+        gridPanel.setLayout(gridPanelLayout);
+        gridPanelLayout.setHorizontalGroup(
+            gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        gridPanelLayout.setVerticalGroup(
+            gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 347, Short.MAX_VALUE)
         );
 
@@ -145,14 +152,14 @@ public class GUIGrid extends javax.swing.JFrame {
                                 .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(settingsButton))))
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,9 +245,9 @@ public class GUIGrid extends javax.swing.JFrame {
     private javax.swing.JButton clearButton;
     private javax.swing.JTextField deadCellField;
     private javax.swing.JLabel deadCellLabel;
+    private javax.swing.JPanel gridPanel;
     private javax.swing.JTextField livingCellField;
     private javax.swing.JLabel livingCellLabel;
-    private javax.swing.JPanel panel;
     private javax.swing.JButton playButton;
     private javax.swing.JButton settingsButton;
     private javax.swing.JLabel speedLabel;
