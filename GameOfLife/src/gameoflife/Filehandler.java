@@ -19,13 +19,18 @@ import javax.swing.JFileChooser;
  */
 public abstract class Filehandler {
     
-    public static boolean[][] loadFile(){
+    /*Do not use untill byte arrays works perfectly*/
+    public static boolean[][] loadFile() throws IOException{
+        //There is a small possiblility that it should be 2 * IntergerSize.
+        //In that case, please comply
         byte[] biteSize = new byte[2];
         
         JFileChooser jfc = new JFileChooser();
         if(jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
             Path path = jfc.getSelectedFile().toPath();
-            
+            byte[] bite = Files.readAllBytes(path);
+            ByteBuffer wrap = ByteBuffer.wrap(bite);
+            int size = wrap.getInt(); //Right now this will render a FUCKNG LARGE NUMBER
             return new boolean[biteSize[0]][biteSize[1]];
         }else{
             System.err.println("File Not Approved");
@@ -35,7 +40,7 @@ public abstract class Filehandler {
     
     public static void saveFile(boolean board[][]) throws IOException{
         
-        //TODO: how to handle filesize?
+        //TODO: how to handle boardsize?
         //TODO: test this in a real scenario and hope for the best <3
         
         //Find size of board
