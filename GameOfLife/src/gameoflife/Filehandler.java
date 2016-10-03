@@ -5,9 +5,7 @@
  */
 package gameoflife;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,7 +15,7 @@ import javax.swing.JFileChooser;
  *
  * @author alicecold
  */
-public abstract class Filehandler {
+public final class Filehandler {
     
     /*Do not use untill byte arrays works perfectly*/
     @Deprecated
