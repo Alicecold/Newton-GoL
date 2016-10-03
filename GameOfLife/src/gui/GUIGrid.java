@@ -14,7 +14,7 @@ public class GUIGrid extends javax.swing.JFrame {
     boolean play = true;
     private static final Color ALIVE_COLOR = new Color(0, 255, 0);
     private static final Color DEAD_COLOR = new Color(216, 209,232);
-    int width = 200, height = 100;
+    private int width = 200, height = 100;
     Graphics offScreenGraph;
     Image offScImg;
     boolean[][] currentCell = new boolean[height][width];
@@ -26,6 +26,11 @@ public class GUIGrid extends javax.swing.JFrame {
     private static final Color color3 = new Color(229,255,231);
     */
     
+    public void setGridSize(int width, int height){
+        this.width = width;
+        this.height = height;
+    }
+    
     public GUIGrid() {
         initComponents();
     }
@@ -33,6 +38,7 @@ public class GUIGrid extends javax.swing.JFrame {
     private void gridColor(){
         offScreenGraph.setColor(gridPanel.getBackground());
         offScreenGraph.fillRect(0, 0, gridPanel.getWidth(), gridPanel.getHeight());
+        //Sätt ut celler manuellt
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
                 if (currentCell[i][j]){
@@ -43,12 +49,13 @@ public class GUIGrid extends javax.swing.JFrame {
                 }
             }
         }
+        //Ritar ut för höjden på spelplan
         offScreenGraph.setColor(DEAD_COLOR);
         for (int i = 1; i <= height; i++){
             int y = i * gridPanel.getHeight() / height;
             offScreenGraph.drawLine(0, y, gridPanel.getWidth(), y);
         }
-        
+        //Ritar ut för bredden på spelplan
         for (int j = 1; j <= width; j++){
             int x = j * gridPanel.getWidth() / width;
             offScreenGraph.drawLine(x, 0, x, gridPanel.getHeight());
@@ -93,7 +100,7 @@ public class GUIGrid extends javax.swing.JFrame {
         );
         gridPanelLayout.setVerticalGroup(
             gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGap(0, 426, Short.MAX_VALUE)
         );
 
         speedLabel.setText("Speed");
@@ -162,7 +169,7 @@ public class GUIGrid extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(119, 119, 119)
                                 .addComponent(speedLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deadCellLabel)
@@ -172,11 +179,10 @@ public class GUIGrid extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(livingCellLabel)
-                                .addGap(110, 110, 110))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(settingsButton))))
+                                .addGap(19, 19, 19))
+                            .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                        .addComponent(settingsButton))
                     .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -186,6 +192,11 @@ public class GUIGrid extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(gridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(speedLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(speedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -194,20 +205,18 @@ public class GUIGrid extends javax.swing.JFrame {
                                     .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(settingsButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(livingCellLabel)
                                     .addComponent(deadCellLabel))
                                 .addGap(9, 9, 9)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(livingCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(deadCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(settingsButton))))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(speedLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(speedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                                    .addComponent(deadCellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(28, 28, 28))))
         );
 
         playButton.getAccessibleContext().setAccessibleDescription("");
