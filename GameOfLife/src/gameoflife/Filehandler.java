@@ -20,6 +20,7 @@ import javax.swing.JFileChooser;
 public abstract class Filehandler {
     
     /*Do not use untill byte arrays works perfectly*/
+    @Deprecated
     public static boolean[][] loadFile() throws IOException{
         //There is a small possiblility that it should be 2 * IntergerSize.
         //In that case, please comply
@@ -38,6 +39,7 @@ public abstract class Filehandler {
         return new boolean[0][0];
     }
     
+    @Deprecated
     public static void saveFile(boolean board[][]) throws IOException{
         
         //TODO: how to handle boardsize?
