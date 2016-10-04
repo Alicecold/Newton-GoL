@@ -7,6 +7,7 @@ package gameoflife;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import javax.swing.JFileChooser;
@@ -22,15 +23,38 @@ public final class Filehandler {
     public static boolean[][] loadFile() throws IOException{
         //There is a small possiblility that it should be 2 * IntergerSize.
         //In that case, please comply
-        byte[] biteSize = new byte[2];
+        byte[] biteSize = new byte[2*Integer.SIZE];
         
         JFileChooser jfc = new JFileChooser();
         if(jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
             Path path = jfc.getSelectedFile().toPath();
             byte[] bite = Files.readAllBytes(path);
             ByteBuffer wrap = ByteBuffer.wrap(bite);
-            int size = wrap.getInt(); //Right now this will render a FUCKNG LARGE NUMBER
-            return new boolean[biteSize[0]][biteSize[1]];
+            IntBuffer ib = wrap.asIntBuffer();
+            int sizeX = ib.get(); //No idea how this will work, but right now it won't render a fricken huge number at least.
+            int sizeY = ib.get();
+            
+            boolean[][] array = new boolean[sizeX][sizeY];
+            int stepX = 0, stepY=0;
+            
+            while(ib.hasRemaining()){
+                if(ib.get() == 1){
+                    array[stepX][stepY] = true;
+                }else{
+                    array[stepX][stepY] = false;
+                }
+                
+                stepX++;
+                if(stepX >= sizeX){
+                    stepX = 0;
+                    stepY++;
+                    if(stepY >= sizeY){
+                        break;
+                    }
+                }
+            }
+            
+            return array;
         }else{
             System.err.println("File Not Approved");
         }
