@@ -34,6 +34,21 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
+        
+    }
+    
+    public int getNeighbours(){
+        int neighbours = 0;
+        for (int y = 0; y < height; y++){
+            for (int x = 0; x < width; x++){
+                if (currentCell[y][x]){
+                    
+                }
+                
+                
+            }
+        }
+        return neighbours;
     }
     
     private void gridColor(){
