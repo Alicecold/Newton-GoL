@@ -92,6 +92,11 @@ public class Setting extends javax.swing.JDialog {
                 loadFromFileButtonMouseEntered(evt);
             }
         });
+        loadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadFromFileButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,6 +156,10 @@ public class Setting extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Nu fick jag dig allt ;)");
         }
     }//GEN-LAST:event_loadFromFileButtonMouseEntered
+
+    private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "Do it correctly, dude ;) ");
+    }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
     /**
      * @param args the command line arguments
