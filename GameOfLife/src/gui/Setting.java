@@ -26,7 +26,7 @@ public class Setting extends javax.swing.JDialog {
         }
     }
     
-    public void setGrid(){
+    public void setGridSize(){
         String itemText = (String)comboBox.getSelectedItem();
         if (itemText.equals("50 x 25"))
             GUIGrid.setGridSize(50, 25);
@@ -185,7 +185,7 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        setGrid();
+        setGridSize();
         resetGrid();
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
@@ -199,19 +199,20 @@ public class Setting extends javax.swing.JDialog {
             resetGrid();
             double rnd;
             
-            for (int y = 0; y < currentCell.length; y++){
-                for (int x = 0; x < currentCell[y].length; x++){
+            for (boolean[] currentCell1 : currentCell) {
+                for (int x = 0; x < currentCell1.length; x++) {
                     rnd = Math.random();
-                    if (rnd > 0.95){
-                        GUIGrid.currentCell[y][x] = true;
+                    if (rnd > 0.95) {
+                        currentCell1[x] = true;
                     }
                 }
             }
-            setGrid();
+            setGridSize();
             setVisible(false);
         }
         else
-            JOptionPane.showMessageDialog(null, "There's nothing to generate, sir.");
+            JOptionPane.showMessageDialog(null, "There's nothing to generate, sir.",
+                                        "Information", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_generateButonActionPerformed
     
     public static void main(String args[]) {
