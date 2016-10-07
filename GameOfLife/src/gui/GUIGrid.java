@@ -37,6 +37,11 @@ public class GUIGrid extends javax.swing.JFrame {
         
     }
     
+    public boolean decide(){
+        int neighbours;
+        
+        return true;
+    }
     
     
     private void gridColor(){
