@@ -41,6 +41,10 @@ public class Board {
     }
     
     private int surroundingNeighbours(int i, int j){
+        /*TODO FIX INDEX OUT OF BOUNDS*/
+        /*If i-1 < 0, i = cells.length*/
+        /*if i+1 > cells.length, i+1 = 0*/
+        /*or something like that*/
         int aliveNeighbour = 0;
                 if (cells[i-1][j-1].isAlive()){
                     aliveNeighbour++;
