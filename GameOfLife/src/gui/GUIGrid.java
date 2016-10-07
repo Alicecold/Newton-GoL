@@ -22,10 +22,11 @@ public class GUIGrid extends javax.swing.JFrame {
     boolean play = true;
     private static final Color ALIVE_COLOR = new Color(0, 255, 0),
                                 DEAD_COLOR = new Color(216, 209,232);
-    private static int width = 200, height = 100;
+    private static int width = 200, 
+                       height = 100;
     Graphics offScreenGraph;
     Image offScImg;
-    boolean[][] currentCell = new boolean[height][width];
+    static boolean[][] currentCell = new boolean[height][width];
     
     public static void setGridSize(int w, int h){
         width = w;

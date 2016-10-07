@@ -5,6 +5,7 @@
  */
 package gui;
 
+import static gui.GUIGrid.currentCell;
 import javax.swing.JOptionPane;
 /**
  *
@@ -18,7 +19,13 @@ public class Setting extends javax.swing.JDialog {
         initComponents();
     }
     
-    
+    public void resetGrid(){
+        for(int x = 0; x < currentCell.length; x++){
+            for(int y = 0; y < currentCell[x].length; y++){
+                currentCell[x][y] = false;
+            }
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -178,6 +185,7 @@ public class Setting extends javax.swing.JDialog {
             GUIGrid.setGridSize(200, 100);
         
         
+        resetGrid();
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
