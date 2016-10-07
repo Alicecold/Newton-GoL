@@ -246,7 +246,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-
+        
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked

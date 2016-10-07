@@ -12,5 +12,5 @@ package gameoflife;
 public class Board {
     Cell[][] Cells = new Cell[200][100];
     
-    Board
+    
 }
