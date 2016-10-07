@@ -152,9 +152,7 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_setRndCellsCheckBoxActionPerformed
 
     private void loadFromFileButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadFromFileButtonMouseEntered
-        while (true){
-            JOptionPane.showMessageDialog(null, "Nu fick jag dig allt ;)");
-        }
+        
     }//GEN-LAST:event_loadFromFileButtonMouseEntered
 
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
