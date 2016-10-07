@@ -12,6 +12,25 @@ import javax.swing.JOptionPane;
  * @author Jacob
  */
 public class Setting extends javax.swing.JDialog {
+    private int gridWidth = 200, gridHeight = 100;
+    
+    @Override
+    public int getWidth(){
+        return gridWidth;
+    }
+    
+    @Override
+    public int getHeight(){
+        return gridHeight;
+    }
+    
+    public void setWidth(int w){
+        gridWidth = w;
+    }
+    
+    public void setHeight(int h){
+        gridHeight = h;
+    }
     
     
     public Setting(java.awt.Frame parent, boolean modal) {
@@ -177,13 +196,22 @@ public class Setting extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         String itemText = (String)comboBox.getSelectedItem();
-        if (itemText.equals("50 x 25"))
+        if (itemText.equals("50 x 25")){
             GUIGrid.setGridSize(50, 25);
-        if (itemText.equals("100 x 50"))
+            setWidth(50);
+            setHeight(25);
+        }
+            
+        if (itemText.equals("100 x 50")){
             GUIGrid.setGridSize(100, 50);
-        if (itemText.equals("200 x 100"))
+            setWidth(100);
+            setHeight(50);
+        }
+        if (itemText.equals("200 x 100")){
             GUIGrid.setGridSize(200, 100);
-        
+            setWidth(200);
+            setHeight(100);
+        }
         
         resetGrid();
         setVisible(false);
@@ -195,7 +223,16 @@ public class Setting extends javax.swing.JDialog {
 
     private void generateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButonActionPerformed
         if (setRndCellsCheckBox.isSelected()){
+            resetGrid();
+            double rnd = Math.random();
             
+            for (int y = 0; y < currentCell[][].length; y++){
+                for (int x = 0; x < getWidth(); x++){
+                    if (rnd > 0.85){
+                        GUIGrid.currentCell[y][x] = true;
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_generateButonActionPerformed
 
