@@ -32,7 +32,7 @@ public class Setting extends javax.swing.JDialog {
 
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        widthBox = new javax.swing.JComboBox<>();
+        comboBox = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         generateButon = new javax.swing.JButton();
         setRndCellsCheckBox = new javax.swing.JCheckBox();
@@ -42,6 +42,11 @@ public class Setting extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         okButton.setText("Ok");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +55,7 @@ public class Setting extends javax.swing.JDialog {
             }
         });
 
-        widthBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100 x 50", "200 x 100", "400 x 200" }));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -111,7 +116,7 @@ public class Setting extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(widthBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                                 .addComponent(loadFromFileButton))))
                     .addGroup(layout.createSequentialGroup()
@@ -128,7 +133,7 @@ public class Setting extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(widthBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadFromFileButton))
                 .addGap(43, 43, 43)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,9 +164,16 @@ public class Setting extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null, "Do it correctly, dude ;) ");
     }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        
+        
+        
+        
+    }//GEN-LAST:event_okButtonActionPerformed
+
+    
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -203,12 +215,12 @@ public class Setting extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JButton generateButon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loadFromFileButton;
     private javax.swing.JButton okButton;
     private javax.swing.JCheckBox setRndCellsCheckBox;
-    private javax.swing.JComboBox<String> widthBox;
     // End of variables declaration//GEN-END:variables
 }

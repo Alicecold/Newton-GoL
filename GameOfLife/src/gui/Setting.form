@@ -32,7 +32,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jPanel1" max="32767" attributes="0"/>
-                                  <Component id="widthBox" max="32767" attributes="0"/>
+                                  <Component id="comboBox" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="199" max="32767" attributes="0"/>
                               <Component id="loadFromFileButton" min="-2" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="widthBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboBox" min="-2" max="-2" attributes="0"/>
                   <Component id="loadFromFileButton" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -77,6 +77,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ok"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
@@ -86,14 +89,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="widthBox">
+    <Component class="javax.swing.JComboBox" name="comboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="100 x 50"/>
+            <StringItem index="1" value="200 x 100"/>
+            <StringItem index="2" value="400 x 200"/>
           </StringArray>
         </Property>
       </Properties>
