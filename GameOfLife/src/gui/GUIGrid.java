@@ -64,6 +64,15 @@ public class GUIGrid extends javax.swing.JFrame {
         }
         gridPanel.getGraphics().drawImage(offScImg, 0, 0, gridPanel);
     }
+    
+    public void resetGrid(){
+        for(int x = 0; x < currentCell.length; x++){
+            for(int y = 0; y < currentCell[x].length; y++){
+                currentCell[x][y] = false;
+            }
+        }
+        gridColor();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -246,7 +255,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-
+        resetGrid();
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void playButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseClicked
