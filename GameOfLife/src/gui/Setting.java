@@ -26,6 +26,16 @@ public class Setting extends javax.swing.JDialog {
         }
     }
     
+    public void setGrid(){
+        String itemText = (String)comboBox.getSelectedItem();
+        if (itemText.equals("50 x 25"))
+            GUIGrid.setGridSize(50, 25);
+        if (itemText.equals("100 x 50"))
+            GUIGrid.setGridSize(100, 50);
+        if (itemText.equals("200 x 100"))
+            GUIGrid.setGridSize(200, 100);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,13 +185,7 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        String itemText = (String)comboBox.getSelectedItem();
-        if (itemText.equals("50 x 25"))
-            GUIGrid.setGridSize(50, 25);
-        if (itemText.equals("100 x 50"))
-            GUIGrid.setGridSize(100, 50);
-        if (itemText.equals("200 x 100"))
-            GUIGrid.setGridSize(200, 100);
+        setGrid();
         resetGrid();
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
@@ -203,8 +207,11 @@ public class Setting extends javax.swing.JDialog {
                     }
                 }
             }
+            setGrid();
+            setVisible(false);
         }
-        setVisible(false);
+        else
+            JOptionPane.showMessageDialog(null, "There's nothing to generate, sir.");
     }//GEN-LAST:event_generateButonActionPerformed
     
     public static void main(String args[]) {
