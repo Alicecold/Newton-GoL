@@ -14,12 +14,12 @@ import javax.swing.JFileChooser;
 
 /**
  *
- * @author alicecold
+ * @author alice
  */
 public final class Filehandler {
     
     /*Do not use untill byte arrays works perfectly*/
-    @Deprecated
+    //@Deprecated
     public static boolean[][] loadFile() throws IOException{
         //There is a small possiblility that it should be 2 * IntergerSize.
         //In that case, please comply
@@ -27,34 +27,36 @@ public final class Filehandler {
         
         JFileChooser jfc = new JFileChooser();
         if(jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-            Path path = jfc.getSelectedFile().toPath();
-            byte[] bite = Files.readAllBytes(path);
-            ByteBuffer wrap = ByteBuffer.wrap(bite);
-            IntBuffer ib = wrap.asIntBuffer();
-            int sizeX = ib.get(); //No idea how this will work, but right now it won't render a fricken huge number at least.
-            int sizeY = ib.get();
-            
-            boolean[][] array = new boolean[sizeX][sizeY];
-            int stepX = 0, stepY=0;
-            
-            while(ib.hasRemaining()){
-                if(ib.get() == 1){
-                    array[stepX][stepY] = true;
-                }else{
-                    array[stepX][stepY] = false;
-                }
-                
-                stepX++;
-                if(stepX >= sizeX){
-                    stepX = 0;
-                    stepY++;
-                    if(stepY >= sizeY){
-                        break;
-                    }
-                }
-            }
-            
-            return array;
+//            Path path = jfc.getSelectedFile().toPath();
+//            byte[] bite = Files.readAllBytes(path);
+//            ByteBuffer wrap = ByteBuffer.wrap(bite);
+//            IntBuffer ib = wrap.asIntBuffer();
+//            int sizeX = ib.get(); //No idea how this will work, but right now it won't render a fricken huge number at least.
+//            int sizeY = ib.get();
+//            
+//            boolean[][] array = new boolean[sizeX][sizeY];
+//            int stepX = 0, stepY=0;
+//            
+//            while(ib.hasRemaining()){
+//                if(ib.get() == 1){
+//                    array[stepX][stepY] = true;
+//                }else{
+//                    array[stepX][stepY] = false;
+//                }
+//                
+//                stepX++;
+//                if(stepX >= sizeX){
+//                    stepX = 0;
+//                    stepY++;
+//                    if(stepY >= sizeY){
+//                        break;
+//                    }
+//                }
+//            }
+//            
+//            return array;
+           System.err.println("Not implemented");
+           return new boolean[0][0];
         }else{
             System.err.println("File Not Approved");
         }
@@ -81,19 +83,20 @@ public final class Filehandler {
         //Open file and fill with cell values
         JFileChooser jfc = new JFileChooser();
         if(jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION){
-            Path path = jfc.getSelectedFile().toPath();
-            for(int x = 0; x < board.length; x++){
-                for(int y = 0; y < board[x].length; y++){
-                    if(board[x][y]){
-                        bite[(x*board[x].length) +y +2] = 1;
-                    }else{
-                        bite[(x*board[x].length) +y +2] = 0;
-                    }
-                }
-            }
-            
-            //write to file
-            Files.write(path,bite);
+//            Path path = jfc.getSelectedFile().toPath();
+//            for(int x = 0; x < board.length; x++){
+//                for(int y = 0; y < board[x].length; y++){
+//                    if(board[x][y]){
+//                        bite[(x*board[x].length) +y +2] = 1;
+//                    }else{
+//                        bite[(x*board[x].length) +y +2] = 0;
+//                    }
+//                }
+//            }
+//            
+//            //write to file
+//            Files.write(path,bite);
+            System.err.println("Not implemented");
             
         }else{
             
