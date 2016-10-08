@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* This is a Newton YH Project for Application  2016.
+ * This is not propriatary in any way, but please spread the word if it is in any way useful for you.
+ * We are a group of four people looking for a job each :D
  */
 package gameoflife;
 
