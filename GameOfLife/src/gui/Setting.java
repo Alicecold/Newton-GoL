@@ -7,6 +7,10 @@ package gui;
 
 
 import javax.swing.JOptionPane;
+import gameoflife.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Jacob, Alice
@@ -14,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Setting extends javax.swing.JDialog {
     
     
-    public static boolean plzGenerate = false;
+    public static boolean plzGenerate = false, plzSize = false;
     public Setting(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -32,6 +36,8 @@ public class Setting extends javax.swing.JDialog {
         if (itemText.equals("200 x 100")){
             GUIGrid.setGridSize(200, 100);
         }
+        
+        plzSize = true;
     }
     
     @SuppressWarnings("unchecked")
@@ -179,7 +185,12 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_loadFromFileButtonMouseEntered
 
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Do it correctly, dude ;) ");
+        try {
+            Filehandler.loadFile();
+        } catch (IOException ex) {
+            System.err.println("IOException when loading file! Shuting down...");
+            System.exit(1);
+        }
     }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
