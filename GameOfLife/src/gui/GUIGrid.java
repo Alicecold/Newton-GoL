@@ -286,6 +286,7 @@ public class GUIGrid extends javax.swing.JFrame {
             Setting.plzSize = false;
         }
         if(Setting.plzGenerate){
+            updateBoardSize();
             board.generate();
             Setting.plzGenerate = false;
         }
