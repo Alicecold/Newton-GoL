@@ -274,11 +274,6 @@ public class GUIGrid extends javax.swing.JFrame {
         /*For Jacob: this is the reason why it only works when it is clicked.*/
         
         
-        int j = width * evt.getX() / gridPanel.getWidth();
-        int i = height * evt.getY() / gridPanel.getHeight();
-        //currentCell[i][j] = !currentCell[i][j]; //Actually, I liked this solution a lot! :D
-        board.getCell(i, j).setState(!board.getCell(i,j).isAlive()); //This was not what I planned on but I liked your solution too much to let it go to waste
-        
         
         /*Plz do this prettier */
         if(Setting.plzSize){
@@ -290,6 +285,14 @@ public class GUIGrid extends javax.swing.JFrame {
             board.generate();
             Setting.plzGenerate = false;
         }
+        
+        
+        int j = width * evt.getX() / gridPanel.getWidth();
+        int i = height * evt.getY() / gridPanel.getHeight();
+        //currentCell[i][j] = !currentCell[i][j]; //Actually, I liked this solution a lot! :D
+        board.getCell(i, j).setState(!board.getCell(i,j).isAlive()); //This was not what I planned on but I liked your solution too much to let it go to waste
+        
+        
         
         
         gridColor();
