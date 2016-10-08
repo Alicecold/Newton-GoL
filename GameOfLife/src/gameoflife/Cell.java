@@ -23,14 +23,20 @@ public class Cell {
         }
     }
     
+    @Deprecated
     public void born(){
         numberOfAlive++;
         isAlive = true;
     }
     
+    @Deprecated
     public void die(){
         numberOfAlive--;
         isAlive = false;
+    }
+    
+    public void setState(boolean alive){
+        isAlive = alive;
     }
     
     public boolean isAlive(){
