@@ -27,7 +27,6 @@ public class GUIGrid extends javax.swing.JFrame {
                        height = 100;
     Graphics offScreenGraph;
     Image offScImg;
-    //static boolean[][] currentCell = new boolean[height][width];
     Board board = new Board(height, width);
     
     public static void setGridSize(int w, int h){
@@ -273,10 +272,25 @@ public class GUIGrid extends javax.swing.JFrame {
 
     private void gridPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridPanelMouseClicked
         /*For Jacob: this is the reason why it only works when it is clicked.*/
+        
+        
         int j = width * evt.getX() / gridPanel.getWidth();
         int i = height * evt.getY() / gridPanel.getHeight();
         //currentCell[i][j] = !currentCell[i][j]; //Actually, I liked this solution a lot! :D
         board.getCell(i, j).setState(!board.getCell(i,j).isAlive()); //This was not what I planned on but I liked your solution too much to let it go to waste
+        
+        
+        /*Plz do this prettier */
+        if(Setting.plzSize){
+            updateBoardSize();
+            Setting.plzSize = false;
+        }
+        if(Setting.plzGenerate){
+            board.generate();
+            Setting.plzGenerate = false;
+        }
+        
+        
         gridColor();
     }//GEN-LAST:event_gridPanelMouseClicked
 
