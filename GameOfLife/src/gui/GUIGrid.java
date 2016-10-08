@@ -4,6 +4,7 @@ import java.awt.Event;
 import javax.swing.*;
 import javax.swing.event.*;
 import gui.Setting.*;
+import gameoflife.*;
 
 ///**
 // *
@@ -26,13 +27,18 @@ public class GUIGrid extends javax.swing.JFrame {
                        height = 100;
     Graphics offScreenGraph;
     Image offScImg;
-    static boolean[][] currentCell = new boolean[height][width];
+    //static boolean[][] currentCell = new boolean[height][width];
+    Board board = new Board(height, width);
     
     public static void setGridSize(int w, int h){
         width = w;
         height = h;
     }
     
+    public void updateBoardSize(){
+        board = new Board(height,width);
+        resetGrid();
+    }
     
     public GUIGrid() {
         initComponents();
@@ -45,7 +51,7 @@ public class GUIGrid extends javax.swing.JFrame {
         //Sätt ut celler manuellt
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
-                if (currentCell[i][j]){
+                if (board.getCell(i, j).isAlive()){
                     offScreenGraph.setColor(ALIVE_COLOR);
                     int x = j * gridPanel.getWidth()/width;
                     int y = i * gridPanel.getHeight()/height;
@@ -68,11 +74,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }
     
     public void resetGrid(){
-        for(int x = 0; x < currentCell.length; x++){
-            for(int y = 0; y < currentCell[x].length; y++){
-                currentCell[x][y] = false;
-            }
-        }
+        board.reset();
         gridColor();
     }
 
@@ -265,15 +267,16 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonMouseClicked
 
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
-        //JOptionPane.showMessageDialog(null, "Mjau!~");
         String[] s = {};
         Setting.main(s);
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void gridPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridPanelMouseClicked
+        /*For Jacob: this is the reason why it only works when it is clicked.*/
         int j = width * evt.getX() / gridPanel.getWidth();
         int i = height * evt.getY() / gridPanel.getHeight();
-        currentCell[i][j] = !currentCell[i][j];
+        //currentCell[i][j] = !currentCell[i][j]; //Actually, I liked this solution a lot! :D
+        board.getCell(i, j).setState(!board.getCell(i,j).isAlive()); //This was not what I planned on but I liked your solution too much to let it go to waste
         gridColor();
     }//GEN-LAST:event_gridPanelMouseClicked
 
