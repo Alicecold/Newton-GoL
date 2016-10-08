@@ -37,6 +37,11 @@ public class Cell {
     
     public void setState(boolean alive){
         isAlive = alive;
+        
+        if(isAlive)
+            numberOfAlive++;
+        else
+            numberOfAlive--;
     }
     
     public boolean isAlive(){
@@ -45,6 +50,10 @@ public class Cell {
     
     public static int getNumberOfAliveCells(){
         return numberOfAlive;
+    }
+    
+    public static void setNumberOfAliveCells(int num){
+        numberOfAlive = num;
     }
     
 }
