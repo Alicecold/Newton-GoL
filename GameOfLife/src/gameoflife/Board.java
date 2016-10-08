@@ -7,7 +7,7 @@ package gameoflife;
 
 /**
  *
- * @author Jacob
+ * @author Jacob, Alice, Shaon
  */
 public class Board {
     Cell[][] cells;
@@ -17,11 +17,43 @@ public class Board {
          
          for (int i =0;i<cells.length;i++){
              for (int j=0;j<cells[i].length;j++){
-                cells [i][j] = new Cell(true);
+                cells [i][j] = new Cell(false);
              }
          }
              
     }
+    
+    public Cell[][] getCells(){
+        return cells;
+    }
+    public Cell getCell(int x, int y){
+        return cells[x][y];
+    }
+    
+    public void generate(){
+        /*as created by Viktor and Jacob in Settings*/
+        reset();
+        double rnd;
+
+        for (Cell[] cell : cells) {
+            for (int x = 0; x < cell.length; x++) {
+                rnd = Math.random();
+                if (rnd > 0.95) {
+                    cell[x].setState(true);
+                }
+            }
+        }
+    }
+    
+    public void reset(){
+        for(int i = 0; i < cells.length; i++){
+            for(int j = 0; j < cells[0].length;j++){
+                cells[i][j].setState(false);
+            }
+        }
+    }
+    
+    @Deprecated
     public void update(){
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
@@ -39,7 +71,7 @@ public class Board {
             }
         }
     }
-    
+        
     private int surroundingNeighbours(int i, int j){
         /*TODO FIX INDEX OUT OF BOUNDS*/
         /*If i-1 < 0, i = cells.length*/

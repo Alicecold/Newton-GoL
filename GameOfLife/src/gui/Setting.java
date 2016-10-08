@@ -5,35 +5,33 @@
  */
 package gui;
 
-import static gui.GUIGrid.currentCell;
+
 import javax.swing.JOptionPane;
 /**
  *
- * @author Jacob
+ * @author Jacob, Alice
  */
 public class Setting extends javax.swing.JDialog {
     
+    
+    public static boolean plzGenerate = false;
     public Setting(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
     
-    public void resetGrid(){
-        for(int x = 0; x < currentCell.length; x++){
-            for(int y = 0; y < currentCell[x].length; y++){
-                currentCell[x][y] = false;
-            }
-        }
-    }
     
-    public void setGridSize(){
+    private void setGridSize(){
         String itemText = (String)comboBox.getSelectedItem();
-        if (itemText.equals("50 x 25"))
+        if (itemText.equals("50 x 25")){
             GUIGrid.setGridSize(50, 25);
-        if (itemText.equals("100 x 50"))
+        }
+        if (itemText.equals("100 x 50")){
             GUIGrid.setGridSize(100, 50);
-        if (itemText.equals("200 x 100"))
+        }
+        if (itemText.equals("200 x 100")){
             GUIGrid.setGridSize(200, 100);
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -186,7 +184,6 @@ public class Setting extends javax.swing.JDialog {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         setGridSize();
-        resetGrid();
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
@@ -195,18 +192,21 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_comboBoxActionPerformed
 
     private void generateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButonActionPerformed
+        
+        plzGenerate = setRndCellsCheckBox.isSelected();
         if (setRndCellsCheckBox.isSelected()){
-            resetGrid();
-            double rnd;
-            
-            for (boolean[] currentCell1 : currentCell) {
-                for (int x = 0; x < currentCell1.length; x++) {
-                    rnd = Math.random();
-                    if (rnd > 0.95) {
-                        currentCell1[x] = true;
-                    }
-                }
-            }
+            /*I've moved this part to board, sorry about that but I believe strongly in the seperation of concepts // Waffle*/
+//            //resetGrid();
+//            double rnd;
+//            
+//            for (boolean[] currentCell1 : currentCell) {
+//                for (int x = 0; x < currentCell1.length; x++) {
+//                    rnd = Math.random();
+//                    if (rnd > 0.95) {
+//                        currentCell1[x] = true;
+//                    }
+//                }
+//            }
             setGridSize();
             setVisible(false);
         }
