@@ -56,6 +56,7 @@ public class Setting extends javax.swing.JDialog {
         setRndCellsCheckBox = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         loadFromFileButton = new javax.swing.JButton();
+        saveFromFileButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -131,6 +132,13 @@ public class Setting extends javax.swing.JDialog {
             }
         });
 
+        saveFromFileButton.setText("Save to file");
+        saveFromFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveFromFileButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,12 +149,14 @@ public class Setting extends javax.swing.JDialog {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-                                .addComponent(loadFromFileButton))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(loadFromFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(saveFromFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(okButton)
@@ -163,7 +173,9 @@ public class Setting extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loadFromFileButton))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveFromFileButton)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,7 +202,6 @@ public class Setting extends javax.swing.JDialog {
 
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
         try {
-            //Filehandler.saveFile(GUIGrid.board.getCells());
             Cell.setNumberOfAliveCells(0);
             GUIGrid.board = Filehandler.loadFile();
             forceGridSize(GUIGrid.board.getCells()[0].length, GUIGrid.board.getCells().length);
@@ -227,6 +238,14 @@ public class Setting extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "There's nothing to generate, sir.",
                                         "Information", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_generateButonActionPerformed
+
+    private void saveFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFromFileButtonActionPerformed
+        try {
+            Filehandler.saveFile(GUIGrid.board.getCells());
+        } catch (IOException ex) {
+            System.err.println("IOException found!");
+        }
+    }//GEN-LAST:event_saveFromFileButtonActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -276,6 +295,7 @@ public class Setting extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loadFromFileButton;
     private javax.swing.JButton okButton;
+    private javax.swing.JButton saveFromFileButton;
     private javax.swing.JCheckBox setRndCellsCheckBox;
     // End of variables declaration//GEN-END:variables
 }
