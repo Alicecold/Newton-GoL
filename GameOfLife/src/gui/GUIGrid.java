@@ -30,6 +30,8 @@ public class GUIGrid extends javax.swing.JFrame {
     Graphics offScreenGraph;
     Image offScImg;
     Board board = new Board(height, width);
+    boolean[][] cells = new boolean[height][width]; 
+    boolean[][] nextMove = new boolean[height][width];
     
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -54,7 +56,7 @@ public class GUIGrid extends javax.swing.JFrame {
                 if (play){
                     for (int y = 0; y < height; y++){
                         for (int x = 0; x < width; x++){
-
+                            nextMove = update();
                         }
                     }
                     for (int y = 0; y < height; y++){
@@ -67,6 +69,7 @@ public class GUIGrid extends javax.swing.JFrame {
             }
         };
         timer.scheduleAtFixedRate(task, 0, 100);
+        gridColor();
     }
     
     private void gridColor(){

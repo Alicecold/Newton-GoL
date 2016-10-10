@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package gameoflife;
-import gui.GUIGrid.*;
 /**
  *
  * @author Jacob, Alice, Shaon
@@ -57,7 +56,6 @@ public class Board {
         Cell.setNumberOfAliveCells(0);
     }
     
-    @Deprecated
     public void update(){
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
@@ -77,10 +75,6 @@ public class Board {
     }
         
     private int surroundingNeighbours(int i, int j){
-        /*TODO FIX INDEX OUT OF BOUNDS*/
-        /*If i-1 < 0, i = cells.length*/
-        /*if i+1 > cells.length, i+1 = 0*/
-        /*or something like that*/
         int aliveNeighbour = 0;
         if (j > 0){
             if (cells[i+1][j-1].isAlive()){
