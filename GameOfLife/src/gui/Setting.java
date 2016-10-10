@@ -247,6 +247,7 @@ public class Setting extends javax.swing.JDialog {
     private void saveFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFromFileButtonActionPerformed
         try {
             Filehandler.saveFile(GUIGrid.board.getCells());
+            setVisible(false);
         } catch (IOException ex) {
             System.err.println("IOException found!");
         }
