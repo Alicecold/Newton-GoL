@@ -85,32 +85,30 @@ public class Board {
         /*if i+1 > cells.length, i+1 = 0*/
         /*or something like that*/
         int aliveNeighbour = 0;
-                if (cells[i-1][j-1].isAlive()){
-                    aliveNeighbour++;
-                }
-                if (cells[i+1][j+1].isAlive()){
-                   aliveNeighbour++; 
-                }
-                if (cells[i-1][j+1].isAlive()){
-                    aliveNeighbour++;
-                }
-                if (cells[i+1][i-j].isAlive()){
-                    aliveNeighbour++;
-                }
-                if (cells[i][j+1].isAlive()){
-                    aliveNeighbour++;
-                }
-                if (cells[i+1][j].isAlive()){
-                    aliveNeighbour++;
-                }
-                
-                if(cells[i][j-1].isAlive()){
-                    aliveNeighbour++;
-                }
-                
-                if(cells[i-1][j].isAlive()){
-                    aliveNeighbour++;
-                }
+            if (cells[i-1][j-1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i+1][j+1].isAlive()){
+               aliveNeighbour++; 
+            }
+            if (cells[i-1][j+1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i+1][i-j].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i][j+1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i+1][j].isAlive()){
+                aliveNeighbour++;
+            }
+            if(cells[i][j-1].isAlive()){
+                aliveNeighbour++;
+            }
+            if(cells[i-1][j].isAlive()){
+                aliveNeighbour++;
+            }
         return aliveNeighbour;
     }
     
