@@ -37,12 +37,12 @@ public class GUIGrid extends javax.swing.JFrame {
         width = w;
         height = h;
     }
-    public int getGridWidth(){
-        return width;
-    }
-    public int getGridHeight(){
-        return height;
-    }
+//    public int getGridWidth(){
+//        return width;
+//    }
+//    public int getGridHeight(){
+//        return height;
+//    }
     
     public void updateBoardSize(){
         board = new Board(height,width);
