@@ -111,7 +111,6 @@ public class Board {
                     aliveNeighbour++;
                 }
             }
-            
         }
         if (i < cells.length){
             if (cells[i+1][j].isAlive()){
@@ -123,9 +122,6 @@ public class Board {
                 aliveNeighbour++;
             }
         }
-        
         return aliveNeighbour;
     }
-    
-    
-    }
+}
