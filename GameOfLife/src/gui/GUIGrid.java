@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 import gui.Setting.*;
 import gameoflife.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 ///**
 // *
@@ -37,12 +39,6 @@ public class GUIGrid extends javax.swing.JFrame {
         width = w;
         height = h;
     }
-//    public int getGridWidth(){
-//        return width;
-//    }
-//    public int getGridHeight(){
-//        return height;
-//    }
     
     public void updateBoardSize(){
         board = new Board(height,width);
@@ -51,7 +47,26 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
-        
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask(){
+            @Override
+            public void run(){
+                if (play){
+                    for (int y = 0; y < height; y++){
+                        for (int x = 0; x < width; x++){
+
+                        }
+                    }
+                    for (int y = 0; y < height; y++){
+                        for (int x = 0; x < width; x++){
+
+                        }
+                    }
+                    gridColor();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, 100);
     }
     
     private void gridColor(){
