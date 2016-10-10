@@ -26,58 +26,59 @@ public final class Filehandler {
         
         JFileChooser jfc = new JFileChooser();
         if(jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+            //open path and get all bytes
             Path path = jfc.getSelectedFile().toPath();
             byte[] bite = Files.readAllBytes(path);
+            
+            //wrap bytes to ints
             ByteBuffer wrap = ByteBuffer.wrap(bite);
             IntBuffer ib = wrap.asIntBuffer();
+            
+            //Get two first ints = size of board
             int sizeY = ib.get(); 
             int sizeX = ib.get();
             
-            System.out.println(sizeX + "x" + sizeY);
+            //Create a board to set with alive cells. All cells wil automatically be set to dead in the constructor.
+            Board board = new Board(sizeY, sizeX);
             
-            Board board = new Board(sizeX, sizeY);
-            int stepX = 0, stepY=0;
-            
-            for(int x = 0; ib.hasRemaining()&& x < sizeX; x++){
-                for(int y = 0; ib.hasRemaining() && y < sizeY; y++){
-                int test = ib.get();
-                if(test == 1){
-                    board.getCell(x, y).setState(true);
-                }else if(test== 0){
-                    board.getCell(x, y).setState(false);
-                }
+            //Fill board with alive cells.
+            for(int x = 0; ib.hasRemaining()&& x < sizeY; x++){
+                for(int y = 0; ib.hasRemaining() && y < sizeX; y++){
+                    int test = ib.get();
+                    if(test == 1){
+                        board.getCell(x, y).setState(true);
+                    }
                 }
             }
+            //Return board
             return board;
         }else{
             System.err.println("File Not Approved");
         }
-        return null;
+        return null; //please change?
     }
     
     
     public static void saveFile(Cell board[][]) throws IOException{
-        //TODO: test this in a real scenario and hope for the best <3
-        
-        //Find size of board
+        //Find size of board and add to bytebuffer
         ByteBuffer dbuf = ByteBuffer.allocate(Integer.SIZE * (2 + (board.length * board[0].length)));
         dbuf.putInt(board.length);
         dbuf.putInt(board[0].length);
         
-        
-        //Open file and fill with cell values
+        //Fill buffer with ints correspondng to the cells    
+        for(int x = 0; x < board.length; x++){
+            for(int y = 0; y < board[x].length; y++){
+                if(board[x][y].isAlive()){
+                    dbuf.putInt(1);
+                }else{
+                    dbuf.putInt(0);
+                }
+            }
+        }
+        //Open file and fill with the values of the buffer
         JFileChooser jfc = new JFileChooser();
         if(jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION){
             Path path = jfc.getSelectedFile().toPath();
-            for(int x = 0; x < board.length; x++){
-                for(int y = 0; y < board[x].length; y++){
-                    if(board[x][y].isAlive()){
-                        dbuf.putInt(1);
-                    }else{
-                        dbuf.putInt(0);
-                    }
-                }
-            }
             byte[] bite = dbuf.array();
             //write to file
             Files.write(path,bite);            
