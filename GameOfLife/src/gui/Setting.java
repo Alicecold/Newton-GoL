@@ -206,18 +206,6 @@ public class Setting extends javax.swing.JDialog {
         
         plzGenerate = setRndCellsCheckBox.isSelected();
         if (setRndCellsCheckBox.isSelected()){
-            /*I've moved this part to board, sorry about that but I believe strongly in the seperation of concepts // Waffle*/
-//            //resetGrid();
-//            double rnd;
-//            
-//            for (boolean[] currentCell1 : currentCell) {
-//                for (int x = 0; x < currentCell1.length; x++) {
-//                    rnd = Math.random();
-//                    if (rnd > 0.95) {
-//                        currentCell1[x] = true;
-//                    }
-//                }
-//            }
             setGridSize();
             setVisible(false);
         }
