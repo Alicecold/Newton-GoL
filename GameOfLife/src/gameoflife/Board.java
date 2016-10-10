@@ -62,8 +62,8 @@ public class Board {
     public void update(){
         Cell[][] write = new Cell[cells.length][cells[0].length];
         copy(cells, write);
-        for (int i = 0; i < cells.length; i++){
-            for (int j = 0; j < cells[i].length; j++){
+        for (int i = 0; i < cells.length-1; i++){
+            for (int j = 0; j < cells[i].length-1; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
                 
                 if(cells[i][j].isAlive() && aliveNeighbour < 2){
