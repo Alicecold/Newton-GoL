@@ -219,7 +219,7 @@ public class Setting extends javax.swing.JDialog {
             System.err.println("IOException when loading file! Shuting down...");
             System.exit(1);
         } catch (NullPointerException ex2){
-            System.err.println("No file choosed.");
+            System.err.println("no file choosed");
         }
     }//GEN-LAST:event_loadFromFileButtonActionPerformed
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package gameoflife;
-
+import gui.GUIGrid.*;
 /**
  *
  * @author Jacob, Alice, Shaon
@@ -20,7 +20,6 @@ public class Board {
                 cells [i][j] = new Cell(false);
              }
          }
-             
     }
     
     public int getNumberOfAliveCells(){
@@ -83,32 +82,46 @@ public class Board {
         /*if i+1 > cells.length, i+1 = 0*/
         /*or something like that*/
         int aliveNeighbour = 0;
-        if (cells[i+1][j-1].isAlive()){
-            aliveNeighbour++;
+        if (j > 0){
+            if (cells[i+1][j-1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (j < cells.length-1){
+                if(cells[i][j-1].isAlive()){
+                aliveNeighbour++;
+                }
+            }
+            if (i > 0){
+                if (cells[i-1][j-1].isAlive()){
+                    aliveNeighbour++;
+                }
+            }
         }
-        if(cells[i][j-1].isAlive()){
-            aliveNeighbour++;
+        if (j < cells[0].length-1){
+            if (i < cells.length-1){
+                if (cells[i+1][j+1].isAlive()){
+                    aliveNeighbour++; 
+                }
+            }
+            if (cells[i][j+1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (i > 0){
+                if (cells[i-1][j+1].isAlive()){
+                    aliveNeighbour++;
+                }
+            }
         }
-        if (cells[i-1][j-1].isAlive()){
-            aliveNeighbour++;
+        if (i < cells.length){
+            if (cells[i+1][j].isAlive()){
+                aliveNeighbour++;
+            }
         }
-        if (cells[i+1][j].isAlive()){
-            aliveNeighbour++;
-        }
-        if(cells[i-1][j].isAlive()){
-            aliveNeighbour++;
-        }
-        if (cells[i+1][j+1].isAlive()){
-            aliveNeighbour++; 
-        }
-        if (cells[i][j+1].isAlive()){
-            aliveNeighbour++;
-        }
-        if (cells[i-1][j+1].isAlive()){
-            aliveNeighbour++;
+        if (i > 0){
+            if(cells[i-1][j].isAlive()){
+                aliveNeighbour++;
+            }
         }
         return aliveNeighbour;
     }
-    
-    
-    }
+}
