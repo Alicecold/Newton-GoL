@@ -36,7 +36,6 @@ public class Board {
     
     
     public void generate(){
-        /*as created by Viktor and Jacob in Settings*/
         reset();
         double rnd;
 
@@ -56,7 +55,6 @@ public class Board {
                 cells[i][j].setState(false);
             }
         }
-        
         Cell.setNumberOfAliveCells(0);
     }
     
@@ -85,28 +83,28 @@ public class Board {
         /*if i+1 > cells.length, i+1 = 0*/
         /*or something like that*/
         int aliveNeighbour = 0;
-            if (cells[i-1][j-1].isAlive()){
-                aliveNeighbour++;
-            }
-            if (cells[i+1][j+1].isAlive()){
-               aliveNeighbour++; 
-            }
-            if (cells[i-1][j+1].isAlive()){
-                aliveNeighbour++;
-            }
             if (cells[i+1][i-j].isAlive()){
-                aliveNeighbour++;
-            }
-            if (cells[i][j+1].isAlive()){
-                aliveNeighbour++;
-            }
-            if (cells[i+1][j].isAlive()){
                 aliveNeighbour++;
             }
             if(cells[i][j-1].isAlive()){
                 aliveNeighbour++;
             }
+            if (cells[i-1][j-1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i+1][j].isAlive()){
+                aliveNeighbour++;
+            }
             if(cells[i-1][j].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i+1][j+1].isAlive()){
+               aliveNeighbour++; 
+            }
+            if (cells[i][j+1].isAlive()){
+                aliveNeighbour++;
+            }
+            if (cells[i-1][j+1].isAlive()){
                 aliveNeighbour++;
             }
         return aliveNeighbour;
