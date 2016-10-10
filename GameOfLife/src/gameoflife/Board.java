@@ -65,6 +65,7 @@ public class Board {
         for (int i = 0; i < cells.length-1; i++){
             for (int j = 0; j < cells[i].length-1; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
+                //System.out.print(aliveNeighbour);
                 
                 if(cells[i][j].isAlive() && aliveNeighbour < 2){
                     write[i][j].setState(false);
@@ -76,49 +77,59 @@ public class Board {
                 }
                 
             }
+            //System.out.print("\n");
         }
         copy(write, cells);
     }
     
-    private void copy(Object source, Object dest) {
-        if(source.getClass().isArray() && dest.getClass().isArray()) {
-            for(int i=0;i<Array.getLength(source); i++) {
-                if(Array.get(source, i) != null && Array.get(source, i).getClass().isArray()) {
-                    copy(Array.get(source, i), Array.get(dest, i));
-                } else {
-                    Array.set(dest, i, Array.get(source, i));
-                }
-            }
+    private void copy(Cell[][] src, Cell[][] dest) {
+        for (int i = 0; i < src.length; i++) {
+            System.arraycopy(src[i], 0, dest[i], 0, src[0].length);
         }
     }
 private int surroundingNeighbours(int i, int j){
         int aliveNeighbour = 0;
         
         int jminus = j-1, jplus= j+1, iminus=i-1, iplus = i+1;
-        if (jminus < 0){jminus = cells[i].length-1;}
-        if (jplus > cells[i].length-1){ jplus = 0;}
-        if (iminus < 0){iminus = cells.length-1;}
-        if (iplus > cells.length-1){ iplus = 0;}
         
-        if (cells[iplus][jminus].isAlive()){
-            aliveNeighbour++;
+        if (jminus < 0){
+            jminus = cells[i].length-1;
         }
-        if(cells[i][jminus].isAlive()){
-            aliveNeighbour++;
+        
+        if (jplus > cells[i].length-1){
+            jplus = 0;
         }
-        if (cells[iminus][jminus].isAlive()){
-            aliveNeighbour++;
+        
+        if (iminus < 0){
+            iminus = cells.length-1;
         }
-        if (cells[iplus][jplus].isAlive()){
-            aliveNeighbour++; 
+        
+        if (iplus > cells.length-1){
+            iplus = 0;
         }
-        if (cells[i][jplus].isAlive()){
-            aliveNeighbour++;
-        }
+        
+//        if (cells[iminus][jminus].isAlive()){
+//            aliveNeighbour++;
+//        }
+//        if(cells[i][jminus].isAlive()){
+//            aliveNeighbour++;
+//        }        
+//        if (cells[iplus][jminus].isAlive()){
+//            aliveNeighbour++;
+//        }
+//        
+//        if (cells[iplus][jplus].isAlive()){
+//            aliveNeighbour++; 
+//        }
+//        if (cells[iplus][j].isAlive()){
+//            aliveNeighbour++;
+//        }
+        
         if (cells[iminus][jplus].isAlive()){
             aliveNeighbour++;
         }
-        if (cells[iplus][j].isAlive()){
+
+        if (cells[i][jplus].isAlive()){
             aliveNeighbour++;
         }
         if(cells[iminus][j].isAlive()){
