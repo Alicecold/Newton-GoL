@@ -40,6 +40,10 @@ public class Setting extends javax.swing.JDialog {
         plzSize = true;
     }
     
+    private void forceGridSize(int x, int y){
+        GUIGrid.setGridSize(x, y);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -186,7 +190,15 @@ public class Setting extends javax.swing.JDialog {
 
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
         try {
-            Filehandler.loadFile();
+            //Filehandler.saveFile(GUIGrid.board.getCells());
+            Cell.setNumberOfAliveCells(0);
+            GUIGrid.board = Filehandler.loadFile();
+            forceGridSize(GUIGrid.board.getCells()[0].length, GUIGrid.board.getCells().length);
+            if(GUIGrid.board != null){
+                setVisible(false);
+            }else{
+                System.err.println("Something went wrong reading file");
+            }
         } catch (IOException ex) {
             System.err.println("IOException when loading file! Shuting down...");
             System.exit(1);
