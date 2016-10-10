@@ -1,12 +1,9 @@
 package gui;
 import java.awt.*;
-import java.awt.Event;
-import javax.swing.*;
-import javax.swing.event.*;
-import gui.Setting.*;
 import gameoflife.*;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 ///**
 // *
@@ -30,8 +27,6 @@ public class GUIGrid extends javax.swing.JFrame {
     Graphics offScreenGraph;
     Image offScImg;
     Board board = new Board(height, width);
-    boolean[][] cells = new boolean[height][width]; 
-    boolean[][] nextMove = new boolean[height][width];
     
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -49,27 +44,17 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask(){
+        int delay = 1000;
+        ActionListener taskPerformer = new ActionListener() {
             @Override
-            public void run(){
-                if (play){
-                    for (int y = 0; y < height; y++){
-                        for (int x = 0; x < width; x++){
-                            nextMove = update();
-                        }
-                    }
-                    for (int y = 0; y < height; y++){
-                        for (int x = 0; x < width; x++){
-
-                        }
-                    }
-                    gridColor();
-                }
+            public void actionPerformed(ActionEvent evt) {
+                board.update();
             }
         };
-        timer.scheduleAtFixedRate(task, 0, 100);
-        gridColor();
+        new Timer(delay, taskPerformer).start();
+        
+        
+        
     }
     
     private void gridColor(){
@@ -333,8 +318,11 @@ public class GUIGrid extends javax.swing.JFrame {
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new GUIGrid().setVisible(true);
+                GUIGrid grid = new GUIGrid();
+                grid.setVisible(true);
+                
             }
         });
     }

@@ -62,13 +62,12 @@ public class Board {
                 int aliveNeighbour = surroundingNeighbours(i,j);
                 
                 if(cells[i][j].isAlive() && aliveNeighbour < 2){
-                    cells[i][j].die();
+                    cells[i][j].setState(false);
                 }else if(cells[i][j].isAlive() && aliveNeighbour > 3){
-                    cells[i][j].die();
+                    cells[i][j].setState(false);
                 }
-                
                 if(!cells[i][j].isAlive() && aliveNeighbour == 3){
-                    cells[i][j].born();
+                    cells[i][j].setState(true);
                 }
             }
         }
@@ -106,7 +105,7 @@ public class Board {
                 }
             }
         }
-        if (i < cells.length){
+        if (i < cells.length-1){
             if (cells[i+1][j].isAlive()){
                 aliveNeighbour++;
             }
