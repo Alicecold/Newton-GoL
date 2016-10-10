@@ -44,14 +44,7 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public GUIGrid() {
         initComponents();
-        int delay = 1000;
-        ActionListener taskPerformer = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                board.update();
-            }
-        };
-        new Timer(delay, taskPerformer).start();
+        
         
         
         
@@ -267,6 +260,21 @@ public class GUIGrid extends javax.swing.JFrame {
             playButton.setText("Play");
             play = false;
         }
+        
+        int delay = 1000;
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (play){
+                    board.update();
+                }
+            }
+        };
+        new Timer(delay, taskPerformer).start();
+        
+        
+        
+        
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
