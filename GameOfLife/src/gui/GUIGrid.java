@@ -24,6 +24,7 @@ public class GUIGrid extends javax.swing.JFrame {
                                 DEAD_COLOR = new Color(216, 209,232);
     private static int width = 200, 
                        height = 100;
+    private int fps;
     Graphics offScreenGraph;
     Image offScImg;
     Board board = new Board(height, width);
@@ -45,7 +46,6 @@ public class GUIGrid extends javax.swing.JFrame {
     public GUIGrid() {
         initComponents();
         
-        int delay = 30;
         ActionListener taskPerformer = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -64,10 +64,11 @@ public class GUIGrid extends javax.swing.JFrame {
                         Setting.plzGenerate = false;
                     }
                     gridColor();
+                    fps = speedSlider.getValue();
                 }
             }
         };
-        new Timer(delay, taskPerformer).start();
+        new Timer(fps, taskPerformer).start();
     }
     
     private void gridColor(){
@@ -143,6 +144,15 @@ public class GUIGrid extends javax.swing.JFrame {
             gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 426, Short.MAX_VALUE)
         );
+
+        speedSlider.setMaximum(2000);
+        speedSlider.setMinimum(30);
+        speedSlider.setValue(1015);
+        speedSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                speedSliderStateChanged(evt);
+            }
+        });
 
         speedLabel.setText("Speed");
 
@@ -314,6 +324,10 @@ public class GUIGrid extends javax.swing.JFrame {
         offScreenGraph = offScImg.getGraphics();
         gridColor();
     }//GEN-LAST:event_gridPanelComponentResized
+
+    private void speedSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_speedSliderStateChanged
+        
+    }//GEN-LAST:event_speedSliderStateChanged
 
     public static void main(String args[]) {
         

@@ -134,6 +134,14 @@
       </Layout>
     </Container>
     <Component class="javax.swing.JSlider" name="speedSlider">
+      <Properties>
+        <Property name="maximum" type="int" value="2000"/>
+        <Property name="minimum" type="int" value="30"/>
+        <Property name="value" type="int" value="1015"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="speedSliderStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="speedLabel">
       <Properties>
