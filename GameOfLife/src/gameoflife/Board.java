@@ -43,7 +43,7 @@ public class Board {
         for (Cell[] cell : cells) {
             for (int x = 0; x < cell.length; x++) {
                 rnd = Math.random();
-                if (rnd > 0.82) {
+                if (rnd > 0.95) {
                     cell[x].setState(true);
                 }
             }
