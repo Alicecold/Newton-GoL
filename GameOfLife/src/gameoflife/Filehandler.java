@@ -70,10 +70,13 @@ public final class Filehandler {
             for(int y = 0; y < board[x].length; y++){
                 if(board[x][y].isAlive()){
                     dbuf.putInt(1);
+                    System.out.print("*");
                 }else{
                     dbuf.putInt(0);
+                    System.out.print(" ");
                 }
             }
+            System.out.print("\n");
         }
         //Open file and fill with the values of the buffer
         JFileChooser jfc = new JFileChooser();
