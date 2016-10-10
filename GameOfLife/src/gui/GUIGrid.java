@@ -27,7 +27,7 @@ public class GUIGrid extends javax.swing.JFrame {
                        height = 100;
     Graphics offScreenGraph;
     Image offScImg;
-    Board board = new Board(height, width);
+    public static Board board = new Board(height, width);
     
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -46,7 +46,6 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public void updateBoardSize(){
         board = new Board(height,width);
-        resetGrid();
     }
     
     public GUIGrid() {
@@ -291,6 +290,7 @@ public class GUIGrid extends javax.swing.JFrame {
         }
         if(Setting.plzGenerate){
             updateBoardSize();
+            resetGrid();
             board.generate();
             Setting.plzGenerate = false;
         }
