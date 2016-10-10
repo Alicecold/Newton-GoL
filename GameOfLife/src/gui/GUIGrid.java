@@ -28,6 +28,7 @@ public class GUIGrid extends javax.swing.JFrame {
     Graphics offScreenGraph;
     Image offScImg;
     Board board = new Board(height, width);
+    Timer time;
     //public static long start = System.nanoTime();
     
     private void updateFields(){
@@ -45,7 +46,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }
     public GUIGrid() {
         initComponents();
-        new javax.swing.Timer(fps, new ActionListener() {    
+        time = new javax.swing.Timer(fps, new ActionListener() {    
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if (play){
@@ -70,7 +71,9 @@ public class GUIGrid extends javax.swing.JFrame {
                     
                 }
             }
-        }).start();
+        });//.start();
+        
+        time.start();
     }
     
     private void gridColor(){
@@ -324,6 +327,7 @@ public class GUIGrid extends javax.swing.JFrame {
 
     private void speedSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_speedSliderStateChanged
         fps = speedSlider.getValue();
+        time.setDelay(speedSlider.getMaximum() - fps);
     }//GEN-LAST:event_speedSliderStateChanged
 
     public static void main(String args[]) {
