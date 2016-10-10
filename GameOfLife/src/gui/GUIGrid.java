@@ -24,7 +24,7 @@ public class GUIGrid extends javax.swing.JFrame {
                                 DEAD_COLOR = new Color(216, 209,232);
     private static int width = 200, 
                        height = 100;
-    private int fps;
+    private int fps = 3000;
     Graphics offScreenGraph;
     Image offScImg;
     Board board = new Board(height, width);
