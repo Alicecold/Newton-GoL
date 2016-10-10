@@ -28,7 +28,7 @@ public class GUIGrid extends javax.swing.JFrame {
     Graphics offScreenGraph;
     Image offScImg;
     Board board = new Board(height, width);
-    public static long start = System.nanoTime();
+    //public static long start = System.nanoTime();
     
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -43,17 +43,18 @@ public class GUIGrid extends javax.swing.JFrame {
         board = new Board(height,width);
         resetGrid();
     }
-    
     public GUIGrid() {
         initComponents();
-        int start;
-        ActionListener taskPerformer = new ActionListener() {
+        new javax.swing.Timer(fps, new ActionListener() {    
             @Override
             public void actionPerformed(ActionEvent evt) {
-                
-                if (play && (System.nanoTime() - GUIGrid.start) < fps){
+                if (play){
+                    //fpsUpdate();
                     board.update();
                     updateFields();
+                    if (fps != fps)
+                        fps = speedSlider.getValue();
+                    
                     
                     /*Plz do this prettier */
                     if(Setting.plzSize){
@@ -66,11 +67,10 @@ public class GUIGrid extends javax.swing.JFrame {
                         Setting.plzGenerate = false;
                     }
                     gridColor();
-                    GUIGrid.start = System.nanoTime(); 
+                    
                 }
             }
-        };
-        //new Timer(fps, taskPerformer).start();
+        }).start();
     }
     
     private void gridColor(){
@@ -284,7 +284,6 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_livingCellFieldActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-
         if (playButton.getText().equals("Play")){
             playButton.setText("Pause");
             play = true;
@@ -292,10 +291,6 @@ public class GUIGrid extends javax.swing.JFrame {
             playButton.setText("Play");
             play = false;
         }
-        
-        
-        
-        
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
