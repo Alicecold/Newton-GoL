@@ -40,7 +40,7 @@ public class Board {
         for (Cell[] cell : cells) {
             for (int x = 0; x < cell.length; x++) {
                 rnd = Math.random();
-                if (rnd > 0.95) {
+                if (rnd > 0.82) {
                     cell[x].setState(true);
                 }
             }
@@ -69,6 +69,7 @@ public class Board {
                 if(!cells[i][j].isAlive() && aliveNeighbour == 3){
                     cells[i][j].setState(true);
                 }
+                
             }
         }
     }
@@ -76,8 +77,10 @@ public class Board {
     private int surroundingNeighbours(int i, int j){
         int aliveNeighbour = 0;
         if (j > 0){
-            if (cells[i+1][j-1].isAlive()){
-                aliveNeighbour++;
+            if (i < cells.length-1){
+                if (cells[i+1][j-1].isAlive()){
+                    aliveNeighbour++;
+                }
             }
             if (j < cells.length-1){
                 if(cells[i][j-1].isAlive()){

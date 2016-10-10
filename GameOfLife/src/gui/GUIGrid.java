@@ -45,9 +45,29 @@ public class GUIGrid extends javax.swing.JFrame {
     public GUIGrid() {
         initComponents();
         
-        
-        
-        
+        int delay = 30;
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (play){
+                    board.update();
+                    updateFields();
+                    
+                    /*Plz do this prettier */
+                    if(Setting.plzSize){
+                        updateBoardSize();
+                        Setting.plzSize = false;
+                    }
+                    if(Setting.plzGenerate){
+                        updateBoardSize();
+                        board.generate();
+                        Setting.plzGenerate = false;
+                    }
+                    gridColor();
+                }
+            }
+        };
+        new Timer(delay, taskPerformer).start();
     }
     
     private void gridColor(){
@@ -261,17 +281,6 @@ public class GUIGrid extends javax.swing.JFrame {
             play = false;
         }
         
-        int delay = 1000;
-        ActionListener taskPerformer = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                if (play){
-                    board.update();
-                }
-            }
-        };
-        new Timer(delay, taskPerformer).start();
-        
         
         
         
@@ -288,33 +297,16 @@ public class GUIGrid extends javax.swing.JFrame {
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
         String[] s = {};
         Setting.main(s);
+        playButton.setText("Play");
+        play = false;
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void gridPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridPanelMouseClicked
-        /*For Jacob: this is the reason why it only works when it is clicked.*/
-        
-        
-        
-        /*Plz do this prettier */
-        if(Setting.plzSize){
-            updateBoardSize();
-            Setting.plzSize = false;
-        }
-        if(Setting.plzGenerate){
-            updateBoardSize();
-            board.generate();
-            Setting.plzGenerate = false;
-        }
-        
-        
         int j = width * evt.getX() / gridPanel.getWidth();
         int i = height * evt.getY() / gridPanel.getHeight();
-        //currentCell[i][j] = !currentCell[i][j]; //Actually, I liked this solution a lot! :D
-        board.getCell(i, j).setState(!board.getCell(i,j).isAlive()); //This was not what I planned on but I liked your solution too much to let it go to waste
-        
-        updateFields();
-        
+        board.getCell(i, j).setState(!board.getCell(i,j).isAlive());
         gridColor();
+        
     }//GEN-LAST:event_gridPanelMouseClicked
 
     private void gridPanelComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_gridPanelComponentResized
