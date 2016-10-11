@@ -60,13 +60,12 @@ public class GUIGrid extends javax.swing.JFrame {
                         updateBoardSize();
                         board.generate();
                         Setting.plzGenerate = false;
-                    }
-                
+                }
+                updateFields();
+                gridColor();
                 if (play){
                     board.update();
-                    updateFields();
                 }
-                gridColor();
             }
         });
         
@@ -161,6 +160,11 @@ public class GUIGrid extends javax.swing.JFrame {
         deadCellField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deadCellFieldActionPerformed(evt);
+            }
+        });
+        deadCellField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                deadCellFieldPropertyChange(evt);
             }
         });
 
@@ -326,6 +330,10 @@ public class GUIGrid extends javax.swing.JFrame {
         fps = speedSlider.getValue();
         time.setDelay(speedSlider.getMaximum() - fps);
     }//GEN-LAST:event_speedSliderStateChanged
+
+    private void deadCellFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_deadCellFieldPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deadCellFieldPropertyChange
 
     public static void main(String args[]) {
         
