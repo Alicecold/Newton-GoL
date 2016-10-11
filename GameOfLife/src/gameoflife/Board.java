@@ -31,19 +31,23 @@ public class Board {
     public void generate(){
         reset();
         double rnd, value;
-        if (cells.length == 25){
+        if (cells.length < 25){
             value = 0.80;
         }
-        else if (cells.length == 50){
+        else if (cells.length < 50){
             value = 0.85;
         }
         else {
-            value = 0.95;
+            value = 0.90;
         }
         for (Cell[] cell : cells) {
             for (int x = 0; x < cell.length; x++) {
                 rnd = Math.random();
-                cell[x].setState(rnd > value);
+                if(rnd > value){
+                    cell[x].setState(true);
+                }else{
+                    cell[x].setAnonymousState(false);
+                }
             }
         }
     }

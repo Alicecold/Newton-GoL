@@ -6,7 +6,7 @@ package gameoflife;
 
 /**
  *
- * @author alicecold
+ * @author Alice
  */
 public class Cell {
     
@@ -18,34 +18,25 @@ public class Cell {
     Cell(boolean isAlive){
         if(isAlive){
             this.isAlive = true;
-            //numberOfAlive++;
         }else{
             this.isAlive = false;
         }
     }
     
-//    Cell(boolean isAlive, boolean isAnonymous){
-//        if(isAlive){
-//            this.isAlive = true;
-//            if(isAnonymous == false)
-//                numberOfAlive++;
-//        }else{
-//            this.isAlive = false;
-//        }
-//    }
-    
     
     public void setState(boolean alive){
         isAlive = alive;
-        if(alive)
+        if(alive){
             numberOfAlive++;
-        else
+        }
+        else{
             numberOfAlive--;
+        }
     }
     
-//    public void setAnonymousState(boolean alive){
-//        isAlive = alive;
-//    }
+    public void setAnonymousState(boolean alive){
+        isAlive = alive;
+    }
     
     public boolean isAlive(){
         return isAlive;
