@@ -91,14 +91,14 @@ private int surroundingNeighbours(int i, int j){
         int jminus = j-1, jplus = j+1, iminus = i-1, iplus = i+1;
         
         if (jminus < 0){
-            jminus = cells[i].length;
-        }else if (jplus > cells[i].length){
+            jminus = cells[i].length-1;
+        }else if (jplus > cells[i].length-1){
             jplus = 0;
         }
         
         if (iminus < 0){
-            iminus = cells.length;
-        }else if (iplus > cells.length){
+            iminus = cells.length-1;
+        }else if (iplus > cells.length-1){
             iplus = 0;
         }
         
