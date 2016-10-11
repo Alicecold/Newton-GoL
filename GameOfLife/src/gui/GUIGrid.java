@@ -52,20 +52,19 @@ public class GUIGrid extends javax.swing.JFrame {
         time = new javax.swing.Timer(fps, new ActionListener() {    
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if (play){
-                    board.update();
-                    updateFields();
-                    
-                    /*Plz do this prettier */
-                    if(Setting.plzSize){
+                if(Setting.plzSize){
                         updateBoardSize();
                         Setting.plzSize = false;
-                    }
-                    if(Setting.plzGenerate){
+                }
+                if(Setting.plzGenerate){
                         updateBoardSize();
                         board.generate();
                         Setting.plzGenerate = false;
                     }
+                
+                if (play){
+                    board.update();
+                    updateFields();
                 }
                 gridColor();
             }
