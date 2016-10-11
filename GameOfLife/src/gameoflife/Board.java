@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package gameoflife;
-import gui.GUIGrid.*;
+
+
 /**
  *
  * @author Jacob, Alice, Shaon
@@ -17,7 +18,7 @@ public class Board {
          Cell.setNumberOfAliveCells(0);
          for (int i =0;i<cells.length;i++){
              for (int j=0;j<cells[i].length;j++){
-                cells [i][j] = new Cell(false);
+                cells[i][j] = new Cell(false);
              }
          }
     }
@@ -57,71 +58,94 @@ public class Board {
         Cell.setNumberOfAliveCells(0);
     }
     
-    @Deprecated
     public void update(){
+        Cell[][] write = new Cell[cells.length][cells[0].length];
+        copy(cells, write);
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
-                
-                if(cells[i][j].isAlive() && aliveNeighbour < 2){
-                    cells[i][j].die();
-                }else if(cells[i][j].isAlive() && aliveNeighbour > 3){
-                    cells[i][j].die();
+                //System.out.print(aliveNeighbour);
+                if(cells[i][j].isAlive()){
+                    
+                    if(aliveNeighbour != 3 && aliveNeighbour != 2){
+                        write[i][j].setState(false);
+                    }
+                    
+                }
+                if(cells[i][j].isDead() && aliveNeighbour == 3){
+                    write[i][j].setState(true);
                 }
                 
-                if(!cells[i][j].isAlive() && aliveNeighbour == 3){
-                    cells[i][j].born();
-                }
             }
+            //System.out.print("\n");
+        }
+        //System.out.println();
+        copy(write, cells);
+    }
+    
+    private void copy(Cell[][] src, Cell[][] dest) {
+        for (int i = 0; i < src.length; i++) {
+            System.arraycopy(src[i], 0, dest[i], 0, src[0].length);
         }
     }
+    
+    
+private int surroundingNeighbours(int i, int j){
+        int aliveNeighbour = 0;    
         
-    private int surroundingNeighbours(int i, int j){
-        /*TODO FIX INDEX OUT OF BOUNDS*/
-        /*If i-1 < 0, i = cells.length*/
-        /*if i+1 > cells.length, i+1 = 0*/
-        /*or something like that*/
-        int aliveNeighbour = 0;
-        if (j > 0){
-            if (cells[i+1][j-1].isAlive()){
-                aliveNeighbour++;
-            }
-            if (j < cells.length-1){
-                if(cells[i][j-1].isAlive()){
-                aliveNeighbour++;
-                }
-            }
-            if (i > 0){
-                if (cells[i-1][j-1].isAlive()){
-                    aliveNeighbour++;
-                }
-            }
+        int jminus = j-1, jplus = j+1, iminus = i-1, iplus = i+1;
+        
+        if (jminus < 0){
+            jminus = cells[i].length-1;
+        }else if (jplus > cells[i].length-1){
+            jplus = 0;
         }
-        if (j < cells[0].length-1){
-            if (i < cells.length-1){
-                if (cells[i+1][j+1].isAlive()){
-                    aliveNeighbour++; 
-                }
-            }
-            if (cells[i][j+1].isAlive()){
-                aliveNeighbour++;
-            }
-            if (i > 0){
-                if (cells[i-1][j+1].isAlive()){
-                    aliveNeighbour++;
-                }
-            }
+        
+        if (iminus < 0){
+            iminus = cells.length-1;
+        }else if (iplus > cells.length-1){
+            iplus = 0;
         }
-        if (i < cells.length){
-            if (cells[i+1][j].isAlive()){
-                aliveNeighbour++;
-            }
+        
+        //first row
+        if (cells[iminus][jminus].isAlive()){
+            aliveNeighbour++;
         }
-        if (i > 0){
-            if(cells[i-1][j].isAlive()){
-                aliveNeighbour++;
-            }
+                
+        if(cells[iminus][j].isAlive()){
+            aliveNeighbour++;
         }
+        if (cells[iminus][jplus].isAlive()){
+            aliveNeighbour++;
+        }
+        
+        //second row
+        if(cells[i][jminus].isAlive()){
+            aliveNeighbour++;
+        }
+//        if(cells[i][j].isAlive()){
+//            //DO NAHING
+//        }
+        if (cells[i][jplus].isAlive()){
+            aliveNeighbour++;
+        }
+       
+        //thrid row
+        
+        if (cells[iplus][jminus].isAlive()){
+            aliveNeighbour++;
+        }
+        
+        if (cells[iplus][j].isAlive()){
+            aliveNeighbour++;
+        }
+        
+        if (cells[iplus][jplus].isAlive()){
+            aliveNeighbour++; 
+        }
+        
+        
+
         return aliveNeighbour;
     }
 }

@@ -1,10 +1,10 @@
 package gui;
 import java.awt.*;
-import java.awt.Event;
-import javax.swing.*;
-import javax.swing.event.*;
-import gui.Setting.*;
 import gameoflife.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+import javax.swing.*;
 
 ///**
 // *
@@ -13,6 +13,7 @@ import gameoflife.*;
 //    private static final Color color1 = new Color(239,229,255);
 //    private static final Color color2 = new Color(255,251,246);
 //    private static final Color color3 = new Color(229,255,231);
+//      (216, 209,232)
 //    */
 // * 
 // * 
@@ -20,14 +21,19 @@ import gameoflife.*;
 // */
 public class GUIGrid extends javax.swing.JFrame {
     
-    boolean play = true;
-    private static final Color ALIVE_COLOR = new Color(0, 255, 0),
-                                DEAD_COLOR = new Color(216, 209,232);
-    private static int width = 200, 
-                       height = 100;
+    boolean play = false;
+    private static final Color ALIVE_COLOR = new Color(37,88,90),
+                                DEAD_COLOR = new Color(25, 24, 88),
+                                GRID_COLOR = new Color(19,39,89);
+    private static int width = 50,//200, 
+                       height = 25;//100;
+    private int fps = 1015;
     Graphics offScreenGraph;
     Image offScImg;
+
+    Timer time;
     public static Board board = new Board(height, width);
+
     
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -37,24 +43,41 @@ public class GUIGrid extends javax.swing.JFrame {
         width = w;
         height = h;
     }
-//    public int getGridWidth(){
-//        return width;
-//    }
-//    public int getGridHeight(){
-//        return height;
-//    }
     
     public void updateBoardSize(){
         board = new Board(height,width);
     }
-    
     public GUIGrid() {
         initComponents();
+        time = new javax.swing.Timer(fps, new ActionListener() {    
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (play){
+                    board.update();
+                    updateFields();
+                    
+                    /*Plz do this prettier */
+                    if(Setting.plzSize){
+                        updateBoardSize();
+                        Setting.plzSize = false;
+                    }
+                    if(Setting.plzGenerate){
+                        updateBoardSize();
+                        board.generate();
+                        Setting.plzGenerate = false;
+                    }
+                    
+                    gridColor();
+                    
+                }
+            }
+        });
         
+        time.start();
     }
     
     private void gridColor(){
-        offScreenGraph.setColor(gridPanel.getBackground());
+        offScreenGraph.setColor(DEAD_COLOR);
         offScreenGraph.fillRect(0, 0, gridPanel.getWidth(), gridPanel.getHeight());
         //Sätt ut celler manuellt
         for (int i = 0; i < height; i++){
@@ -68,7 +91,7 @@ public class GUIGrid extends javax.swing.JFrame {
             }
         }
         //Ritar ut för höjden på spelplan
-        offScreenGraph.setColor(DEAD_COLOR);
+        offScreenGraph.setColor(GRID_COLOR);
         for (int i = 1; i <= height; i++){
             int y = i * gridPanel.getHeight() / height;
             offScreenGraph.drawLine(0, y, gridPanel.getWidth(), y);
@@ -126,6 +149,15 @@ public class GUIGrid extends javax.swing.JFrame {
             gridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 426, Short.MAX_VALUE)
         );
+
+        speedSlider.setMaximum(2000);
+        speedSlider.setMinimum(30);
+        speedSlider.setValue(1015);
+        speedSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                speedSliderStateChanged(evt);
+            }
+        });
 
         speedLabel.setText("Speed");
 
@@ -255,7 +287,6 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_livingCellFieldActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-
         if (playButton.getText().equals("Play")){
             playButton.setText("Pause");
             play = true;
@@ -276,34 +307,16 @@ public class GUIGrid extends javax.swing.JFrame {
     private void settingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsButtonActionPerformed
         String[] s = {};
         Setting.main(s);
+        playButton.setText("Play");
+        play = false;
     }//GEN-LAST:event_settingsButtonActionPerformed
 
     private void gridPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridPanelMouseClicked
-        /*For Jacob: this is the reason why it only works when it is clicked.*/
-        
-        
-        
-        /*Plz do this prettier */
-        if(Setting.plzSize){
-            updateBoardSize();
-            Setting.plzSize = false;
-        }
-        if(Setting.plzGenerate){
-            updateBoardSize();
-            resetGrid();
-            board.generate();
-            Setting.plzGenerate = false;
-        }
-        
-        
         int j = width * evt.getX() / gridPanel.getWidth();
         int i = height * evt.getY() / gridPanel.getHeight();
-        //currentCell[i][j] = !currentCell[i][j]; //Actually, I liked this solution a lot! :D
-        board.getCell(i, j).setState(!board.getCell(i,j).isAlive()); //This was not what I planned on but I liked your solution too much to let it go to waste
-        
-        updateFields();
-        
+        board.getCell(i, j).setState(!board.getCell(i,j).isAlive());
         gridColor();
+        
     }//GEN-LAST:event_gridPanelMouseClicked
 
     private void gridPanelComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_gridPanelComponentResized
@@ -312,11 +325,19 @@ public class GUIGrid extends javax.swing.JFrame {
         gridColor();
     }//GEN-LAST:event_gridPanelComponentResized
 
+    private void speedSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_speedSliderStateChanged
+        fps = speedSlider.getValue();
+        time.setDelay(speedSlider.getMaximum() - fps);
+    }//GEN-LAST:event_speedSliderStateChanged
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new GUIGrid().setVisible(true);
+                GUIGrid grid = new GUIGrid();
+                grid.setVisible(true);
+                
             }
         });
     }
