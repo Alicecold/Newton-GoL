@@ -37,6 +37,10 @@ public class Cell {
         return isAlive;
     }
     
+    public boolean isDead(){
+        return !isAlive;
+    }
+    
     public static int getNumberOfAliveCells(){
         return numberOfAlive;
     }

@@ -4,6 +4,7 @@ import gameoflife.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.swing.*;
 
 ///**
 // *
@@ -12,6 +13,7 @@ import javax.swing.Timer;
 //    private static final Color color1 = new Color(239,229,255);
 //    private static final Color color2 = new Color(255,251,246);
 //    private static final Color color3 = new Color(229,255,231);
+//      (216, 209,232)
 //    */
 // * 
 // * 
@@ -20,8 +22,9 @@ import javax.swing.Timer;
 public class GUIGrid extends javax.swing.JFrame {
     
     boolean play = true;
-    private static final Color ALIVE_COLOR = new Color(0, 255, 0),
-                                DEAD_COLOR = new Color(216, 209,232);
+    private static final Color ALIVE_COLOR = new Color(37,88,90),
+                                DEAD_COLOR = new Color(25, 24, 88),
+                                GRID_COLOR = new Color(19,39,89);
     private static int width = 200, 
                        height = 100;
     private int fps = 1015;
@@ -63,6 +66,7 @@ public class GUIGrid extends javax.swing.JFrame {
                         board.generate();
                         Setting.plzGenerate = false;
                     }
+                    
                     gridColor();
                     
                 }
@@ -70,10 +74,11 @@ public class GUIGrid extends javax.swing.JFrame {
         });
         
         time.start();
+        time.setCoalesce(false);
     }
     
     private void gridColor(){
-        offScreenGraph.setColor(gridPanel.getBackground());
+        offScreenGraph.setColor(DEAD_COLOR);
         offScreenGraph.fillRect(0, 0, gridPanel.getWidth(), gridPanel.getHeight());
         //Sätt ut celler manuellt
         for (int i = 0; i < height; i++){
@@ -87,7 +92,7 @@ public class GUIGrid extends javax.swing.JFrame {
             }
         }
         //Ritar ut för höjden på spelplan
-        offScreenGraph.setColor(DEAD_COLOR);
+        offScreenGraph.setColor(GRID_COLOR);
         for (int i = 1; i <= height; i++){
             int y = i * gridPanel.getHeight() / height;
             offScreenGraph.drawLine(0, y, gridPanel.getWidth(), y);
