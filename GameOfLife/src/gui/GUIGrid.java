@@ -15,8 +15,8 @@ public class GUIGrid extends javax.swing.JFrame {
     private static final Color ALIVE_COLOR = new Color(5, 83, 197),
                                 DEAD_COLOR = new Color(58, 70, 89),
                                 GRID_COLOR = new Color(5, 21, 64);
-    private static int width = 200, 
-                       height = 100;
+    private static int width = 50, 
+                       height = 25;
     private int fps = 1015;
     Graphics offScreenGraph;
     Image offScImg;

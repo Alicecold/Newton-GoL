@@ -30,13 +30,20 @@ public class Board {
     //Generates random cells on the grid
     public void generate(){
         reset();
-        double rnd;
+        double rnd, value;
+        if (cells.length == 25){
+            value = 0.80;
+        }
+        else if (cells.length == 50){
+            value = 0.85;
+        }
+        else {
+            value = 0.95;
+        }
         for (Cell[] cell : cells) {
             for (int x = 0; x < cell.length; x++) {
                 rnd = Math.random();
-                if (rnd > 0.95) {
-                    cell[x].setState(true);
-                }
+                cell[x].setState(rnd > value);
             }
         }
     }
