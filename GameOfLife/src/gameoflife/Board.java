@@ -5,7 +5,6 @@
  */
 package gameoflife;
 
-import java.lang.reflect.Array;
 
 /**
  *
@@ -65,8 +64,7 @@ public class Board {
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
-                System.out.print(aliveNeighbour);
-                
+                //System.out.print(aliveNeighbour);
                 if(cells[i][j].isAlive() && (aliveNeighbour < 2 || aliveNeighbour > 3)){
                     write[i][j].setState(false);
                 }else if(cells[i][j].isDead() && aliveNeighbour == 3){
@@ -74,9 +72,9 @@ public class Board {
                 }
                 
             }
-            System.out.print("\n");
+            //System.out.print("\n");
         }
-        System.out.println();
+        //System.out.println();
         copy(write, cells);
     }
     
@@ -90,21 +88,17 @@ public class Board {
 private int surroundingNeighbours(int i, int j){
         int aliveNeighbour = 0;    
         
-        int jminus = j-1, jplus= j+1, iminus=i-1, iplus = i+1;
+        int jminus = j-1, jplus = j+1, iminus = i-1, iplus = i+1;
         
         if (jminus < 0){
-            jminus = cells[i].length-1;
-        }
-        
-        if (jplus > cells[i].length-1){
+            jminus = cells[i].length;
+        }else if (jplus > cells[i].length){
             jplus = 0;
         }
         
         if (iminus < 0){
-            iminus = cells.length-1;
-        }
-        
-        if (iplus > cells.length-1){
+            iminus = cells.length;
+        }else if (iplus > cells.length){
             iplus = 0;
         }
         
@@ -124,10 +118,13 @@ private int surroundingNeighbours(int i, int j){
         if(cells[i][jminus].isAlive()){
             aliveNeighbour++;
         }
+//        if(cells[i][j].isAlive()){
+//            //DO NAHING
+//        }
         if (cells[i][jplus].isAlive()){
             aliveNeighbour++;
         }
-        
+       
         //thrid row
         
         if (cells[iplus][jminus].isAlive()){
@@ -141,6 +138,7 @@ private int surroundingNeighbours(int i, int j){
         if (cells[iplus][jplus].isAlive()){
             aliveNeighbour++; 
         }
+        
         
 
         return aliveNeighbour;
