@@ -17,13 +17,8 @@ import javax.swing.JFileChooser;
  */
 public final class Filehandler {
     
-    /*Do not use untill byte arrays works perfectly*/
-    //@Deprecated
-    public static Board loadFile() throws IOException{
-        //There is a small possiblility that it should be 2 * IntergerSize.
-        //In that case, please comply
-        byte[] biteSize = new byte[2*Integer.SIZE];
-        
+        public static Board loadFile() throws IOException{
+                
         JFileChooser jfc = new JFileChooser();
         if(jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
             //open path and get all bytes
@@ -70,13 +65,10 @@ public final class Filehandler {
             for(int y = 0; y < board[x].length; y++){
                 if(board[x][y].isAlive()){
                     dbuf.putInt(1);
-                    System.out.print("*");
                 }else{
                     dbuf.putInt(0);
-                    System.out.print(" ");
                 }
             }
-            System.out.print("\n");
         }
         //Open file and fill with the values of the buffer
         JFileChooser jfc = new JFileChooser();

@@ -64,22 +64,17 @@ public class Board {
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
-                //System.out.print(aliveNeighbour);
-                if(cells[i][j].isAlive()){
-                    
-                    if(aliveNeighbour != 3 && aliveNeighbour != 2){
-                        write[i][j].setState(false);
-                    }
-                    
+                
+                if(cells[i][j].isAlive() && aliveNeighbour != 3 && aliveNeighbour != 2){
+                        cells[i][j].setState(false);
                 }
                 if(cells[i][j].isDead() && aliveNeighbour == 3){
-                    write[i][j].setState(true);
+                        cells[i][j].setState(true);
                 }
                 
             }
-            //System.out.print("\n");
         }
-        //System.out.println();
+        
         copy(write, cells);
     }
     
@@ -107,6 +102,7 @@ private int surroundingNeighbours(int i, int j){
             iplus = 0;
         }
         
+
         //first row
         if (cells[iminus][jminus].isAlive()){
             aliveNeighbour++;

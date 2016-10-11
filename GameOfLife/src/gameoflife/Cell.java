@@ -14,6 +14,7 @@ public class Cell {
     private static int numberOfAlive = 0;
     
     
+    
     Cell(boolean isAlive){
         if(isAlive){
             this.isAlive = true;
@@ -26,8 +27,7 @@ public class Cell {
     
     public void setState(boolean alive){
         isAlive = alive;
-        
-        if(isAlive)
+        if(alive)
             numberOfAlive++;
         else
             numberOfAlive--;
@@ -44,7 +44,7 @@ public class Cell {
     public static int getNumberOfAliveCells(){
         return numberOfAlive;
     }
-    
+
     public static void setNumberOfAliveCells(int num){
         numberOfAlive = num;
     }
