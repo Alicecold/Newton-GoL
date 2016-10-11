@@ -7,7 +7,7 @@ import javax.swing.Timer;
 
 // * 
 // * 
-// * @author Jacob ahlberg, Alice Darner, 
+// * @author Jacob ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
 // */
 public class GUIGrid extends javax.swing.JFrame {
     
@@ -24,7 +24,6 @@ public class GUIGrid extends javax.swing.JFrame {
     Timer time;
     public static Board board = new Board(height, width);
 
-    
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
         deadCellField.setText("" + ((width * height) - board.getNumberOfAliveCells()));
@@ -42,10 +41,12 @@ public class GUIGrid extends javax.swing.JFrame {
         time = new javax.swing.Timer(fps, new ActionListener() {    
             @Override
             public void actionPerformed(ActionEvent evt) {
+                //PLEASE FIX THE NAMES
                 if(Setting.plzSize){
                         updateBoardSize();
                         Setting.plzSize = false;
                 }
+                //PLEASE FIX THE NAMES
                 if(Setting.plzGenerate){
                         updateBoardSize();
                         board.generate();
@@ -58,14 +59,13 @@ public class GUIGrid extends javax.swing.JFrame {
                 }
             }
         });
-        
         time.start();
     }
     
     private void gridColor(){
         offScreenGraph.setColor(DEAD_COLOR);
         offScreenGraph.fillRect(0, 0, gridPanel.getWidth(), gridPanel.getHeight());
-        //Sätt ut celler manuellt
+        //The user can manually place out living cells
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
                 if (board.getCell(i, j).isAlive()){
@@ -76,13 +76,13 @@ public class GUIGrid extends javax.swing.JFrame {
                 }
             }
         }
-        //Ritar ut för höjden på spelplan
+        //Writes out the height of the grid
         offScreenGraph.setColor(GRID_COLOR);
         for (int i = 1; i <= height; i++){
             int y = i * gridPanel.getHeight() / height;
             offScreenGraph.drawLine(0, y, gridPanel.getWidth(), y);
         }
-        //Ritar ut för bredden på spelplan
+        //Writes out the width of the grid
         for (int j = 1; j <= width; j++){
             int x = j * gridPanel.getWidth() / width;
             offScreenGraph.drawLine(x, 0, x, gridPanel.getHeight());
@@ -90,6 +90,7 @@ public class GUIGrid extends javax.swing.JFrame {
         gridPanel.getGraphics().drawImage(offScImg, 0, 0, gridPanel);
     }
     
+    //
     public void resetGrid(){
         board.reset();
         updateFields();
