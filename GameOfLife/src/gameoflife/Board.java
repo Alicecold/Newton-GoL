@@ -68,10 +68,10 @@ public class Board {
                 int aliveNeighbour = surroundingNeighbours(i,j);
                 
                 if(cells[i][j].isAlive() && aliveNeighbour != 3 && aliveNeighbour != 2){
-                        cells[i][j].setState(false);
+                    write[i][j].setState(false);
                 }
                 if(cells[i][j].isDead() && aliveNeighbour == 3){
-                        cells[i][j].setState(true);
+                    write[i][j].setState(true);
                 }
                 
             }
