@@ -19,7 +19,7 @@ public class Board {
          Cell.setNumberOfAliveCells(0);
          for (int i =0;i<cells.length;i++){
              for (int j=0;j<cells[i].length;j++){
-                cells[i][j] = new Cell(true);
+                cells[i][j] = new Cell(false);
              }
          }
     }
@@ -65,7 +65,7 @@ public class Board {
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
-                //System.out.print(aliveNeighbour);
+                System.out.print(aliveNeighbour);
                 
                 if(cells[i][j].isAlive() && (aliveNeighbour < 2 || aliveNeighbour > 3)){
                     write[i][j].setState(false);
@@ -74,8 +74,9 @@ public class Board {
                 }
                 
             }
-            //System.out.print("\n");
+            System.out.print("\n");
         }
+        System.out.println();
         copy(write, cells);
     }
     
@@ -87,7 +88,7 @@ public class Board {
     
     
 private int surroundingNeighbours(int i, int j){
-        int aliveNeighbour = 8;    
+        int aliveNeighbour = 0;    
         
         int jminus = j-1, jplus= j+1, iminus=i-1, iplus = i+1;
         
@@ -109,36 +110,36 @@ private int surroundingNeighbours(int i, int j){
         
         //first row
         if (cells[iminus][jminus].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
                 
         if(cells[iminus][j].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
         if (cells[iminus][jplus].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
         
         //second row
         if(cells[i][jminus].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
         if (cells[i][jplus].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
         
         //thrid row
         
         if (cells[iplus][jminus].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
         
         if (cells[iplus][j].isAlive()){
-            aliveNeighbour--;
+            aliveNeighbour++;
         }
         
         if (cells[iplus][jplus].isAlive()){
-            aliveNeighbour--; 
+            aliveNeighbour++; 
         }
         
 
