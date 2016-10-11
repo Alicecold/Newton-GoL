@@ -21,7 +21,7 @@ import javax.swing.*;
 // */
 public class GUIGrid extends javax.swing.JFrame {
     
-    boolean play = true;
+    boolean play = false;
     private static final Color ALIVE_COLOR = new Color(37,88,90),
                                 DEAD_COLOR = new Color(25, 24, 88),
                                 GRID_COLOR = new Color(19,39,89);
@@ -74,7 +74,6 @@ public class GUIGrid extends javax.swing.JFrame {
         });
         
         time.start();
-        //time.setCoalesce(false);
     }
     
     private void gridColor(){
