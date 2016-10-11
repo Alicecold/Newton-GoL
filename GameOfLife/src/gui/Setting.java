@@ -1,29 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
-
 
 import javax.swing.JOptionPane;
 import gameoflife.*;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 /**
- *
- * @author Jacob, Alice
+ * @author Jacob ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
  */
 public class Setting extends javax.swing.JDialog {
-    
     
     public static boolean plzGenerate = false, plzSize = false;
     public Setting(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    
     
     private void setGridSize(){
         String itemText = (String)comboBox.getSelectedItem();
@@ -36,7 +26,6 @@ public class Setting extends javax.swing.JDialog {
         if (itemText.equals("200 x 100")){
             GUIGrid.setGridSize(200, 100);
         }
-        
         plzSize = true;
     }
     
@@ -77,11 +66,6 @@ public class Setting extends javax.swing.JDialog {
         });
 
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "50 x 25", "100 x 50", "200 x 100" }));
-        comboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -93,11 +77,6 @@ public class Setting extends javax.swing.JDialog {
         });
 
         setRndCellsCheckBox.setText("Set random cells");
-        setRndCellsCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setRndCellsCheckBoxActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,11 +102,6 @@ public class Setting extends javax.swing.JDialog {
         jLabel1.setText("Storlek på brädan");
 
         loadFromFileButton.setText("Load from file");
-        loadFromFileButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                loadFromFileButtonMouseEntered(evt);
-            }
-        });
         loadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadFromFileButtonActionPerformed(evt);
@@ -159,11 +133,10 @@ public class Setting extends javax.swing.JDialog {
                         .addGap(13, 13, 13)
                         .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(saveFromFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(loadFromFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveFromFileButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loadFromFileButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -197,14 +170,6 @@ public class Setting extends javax.swing.JDialog {
         setVisible(false);
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void setRndCellsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setRndCellsCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_setRndCellsCheckBoxActionPerformed
-
-    private void loadFromFileButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadFromFileButtonMouseEntered
-        
-    }//GEN-LAST:event_loadFromFileButtonMouseEntered
-
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
         try {
             Cell.setNumberOfAliveCells(0);
@@ -228,10 +193,6 @@ public class Setting extends javax.swing.JDialog {
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
 
-    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        
-    }//GEN-LAST:event_comboBoxActionPerformed
-
     private void generateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButonActionPerformed
         
         plzGenerate = setRndCellsCheckBox.isSelected();
@@ -254,39 +215,9 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_saveFromFileButtonActionPerformed
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Setting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Setting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Setting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Setting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Setting dialog = new Setting(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
                 dialog.setVisible(true);
             }
             

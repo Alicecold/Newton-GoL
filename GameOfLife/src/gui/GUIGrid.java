@@ -5,10 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-// * 
-// * 
-// * @author Jacob ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
-// */
+/**
+ * @author Jacob ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
+ */
 public class GUIGrid extends javax.swing.JFrame {
     
     boolean play = false;
@@ -289,13 +288,11 @@ public class GUIGrid extends javax.swing.JFrame {
     }//GEN-LAST:event_speedSliderStateChanged
 
     public static void main(String args[]) {
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 GUIGrid grid = new GUIGrid();
                 grid.setVisible(true);
-                
             }
         });
     }

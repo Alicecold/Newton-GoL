@@ -1,7 +1,7 @@
 package gameoflife;
+
 /**
- *
- * @author Jacob, Alice, Shaon, Viktor
+ * @author Jacob ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
  */
 public class Board {
     Cell[][] cells;
