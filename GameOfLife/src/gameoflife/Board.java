@@ -5,6 +5,8 @@
  */
 package gameoflife;
 
+import java.util.Arrays;
+
 
 /**
  *
@@ -59,8 +61,8 @@ public class Board {
     }
     
     public void update(){
-        Cell[][] write = new Cell[cells.length][cells[0].length];
-        copy(cells, write);
+        Cell[][] write;// = new Cell[cells.length][cells[0].length];
+        write = copyCellArray(cells);
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
                 int aliveNeighbour = surroundingNeighbours(i,j);
@@ -75,14 +77,25 @@ public class Board {
             }
         }
         
-        copy(write, cells);
+        cells = copyCellArray(write);
     }
     
-    private void copy(Cell[][] src, Cell[][] dest) {
-        for (int i = 0; i < src.length; i++) {
-            System.arraycopy(src[i], 0, dest[i], 0, src[0].length);
+    /*Needs better method of copying*/
+    private Cell[][] copyCellArray(Cell[][] src) {
+        if (src == null) {
+            return null;
         }
-    }
+
+        final Cell[][] result = new Cell[src.length][src[0].length];
+        for (int i = 0; i < src.length; i++) {
+            for(int j = 0; j < src[i].length; j++){
+                result[i][j] = new Cell(src[i][j].isAlive());//Arrays.copyOf(src[i], src[i].length);
+            // For Java versions prior to Java 6 use the next:
+            // System.arraycopy(original[i], 0, result[i], 0, original[i].length);
+            }
+        }
+        return result;
+}
     
     
 private int surroundingNeighbours(int i, int j){

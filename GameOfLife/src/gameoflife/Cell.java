@@ -18,11 +18,21 @@ public class Cell {
     Cell(boolean isAlive){
         if(isAlive){
             this.isAlive = true;
-            numberOfAlive++;
+            //numberOfAlive++;
         }else{
             this.isAlive = false;
         }
     }
+    
+//    Cell(boolean isAlive, boolean isAnonymous){
+//        if(isAlive){
+//            this.isAlive = true;
+//            if(isAnonymous == false)
+//                numberOfAlive++;
+//        }else{
+//            this.isAlive = false;
+//        }
+//    }
     
     
     public void setState(boolean alive){
@@ -32,6 +42,10 @@ public class Cell {
         else
             numberOfAlive--;
     }
+    
+//    public void setAnonymousState(boolean alive){
+//        isAlive = alive;
+//    }
     
     public boolean isAlive(){
         return isAlive;
