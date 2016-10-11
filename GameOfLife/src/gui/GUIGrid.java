@@ -25,8 +25,8 @@ public class GUIGrid extends javax.swing.JFrame {
     private static final Color ALIVE_COLOR = new Color(37,88,90),
                                 DEAD_COLOR = new Color(25, 24, 88),
                                 GRID_COLOR = new Color(19,39,89);
-    private static int width = 50,//200, 
-                       height = 25;//100;
+    private static int width = 200, 
+                       height = 100;
     private int fps = 1015;
     Graphics offScreenGraph;
     Image offScImg;
@@ -66,10 +66,8 @@ public class GUIGrid extends javax.swing.JFrame {
                         board.generate();
                         Setting.plzGenerate = false;
                     }
-                    
-                    gridColor();
-                    
                 }
+                gridColor();
             }
         });
         
