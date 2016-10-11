@@ -30,9 +30,10 @@ public class GUIGrid extends javax.swing.JFrame {
     private int fps = 1015;
     Graphics offScreenGraph;
     Image offScImg;
-    Board board = new Board(height, width);
+
     Timer time;
-    //public static long start = System.nanoTime();
+    public static Board board = new Board(height, width);
+
     
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -45,7 +46,6 @@ public class GUIGrid extends javax.swing.JFrame {
     
     public void updateBoardSize(){
         board = new Board(height,width);
-        resetGrid();
     }
     public GUIGrid() {
         initComponents();
