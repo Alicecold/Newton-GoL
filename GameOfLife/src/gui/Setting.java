@@ -219,6 +219,7 @@ public class Setting extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Setting dialog = new Setting(new javax.swing.JFrame(), true);
+                dialog.setTitle("Settings");
                 dialog.setVisible(true);
             }
             

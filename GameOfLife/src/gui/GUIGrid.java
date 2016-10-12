@@ -37,6 +37,7 @@ public class GUIGrid extends javax.swing.JFrame {
     }
     public GUIGrid() {
         initComponents();
+        this.setTitle("Game Of Life v.1.0.1");
         time = new javax.swing.Timer(fps, new ActionListener() {    
             @Override
             public void actionPerformed(ActionEvent evt) {
