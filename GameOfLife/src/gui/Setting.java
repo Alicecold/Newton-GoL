@@ -174,9 +174,9 @@ public class Setting extends javax.swing.JDialog {
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
         try {
             Cell.setNumberOfAliveCells(0);
-            GUIGrid.board = Filehandler.loadFile();
-            forceGridSize(GUIGrid.board.getCells()[0].length, GUIGrid.board.getCells().length);
-            if(GUIGrid.board != null){
+            GUIGrid.setBoard(Filehandler.loadFile());
+            forceGridSize(GUIGrid.getBoard().getBoardSize(0), GUIGrid.getBoard().getBoardSize(1));
+            if(GUIGrid.getBoard() != null){
                 setVisible(false);
             }else{
                 System.err.println("Something went wrong reading file");
@@ -208,7 +208,7 @@ public class Setting extends javax.swing.JDialog {
 
     private void saveFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFromFileButtonActionPerformed
         try {
-            Filehandler.saveFile(GUIGrid.board.getCells());
+            Filehandler.saveFile(GUIGrid.getBoard());
             setVisible(false);
         } catch (IOException ex) {
             System.err.println("IOException found!");

@@ -54,16 +54,17 @@ public final class Filehandler {
     }
     
     
-    public static void saveFile(Cell board[][]) throws IOException{
+    public static void saveFile(Board board) throws IOException{
+        
         //Find size of board and add to bytebuffer
-        ByteBuffer dbuf = ByteBuffer.allocate(Integer.SIZE * (2 + (board.length * board[0].length)));
-        dbuf.putInt(board.length);
-        dbuf.putInt(board[0].length);
+        ByteBuffer dbuf = ByteBuffer.allocate(Integer.SIZE * (2 + (board.getBoardSize(0) * board.getBoardSize(1))));
+        dbuf.putInt(board.getBoardSize(0));
+        dbuf.putInt(board.getBoardSize(1));
         
         //Fill buffer with ints correspondng to the cells    
-        for(int x = 0; x < board.length; x++){
-            for(int y = 0; y < board[x].length; y++){
-                if(board[x][y].isAlive()){
+        for(int x = 0; x < board.getBoardSize(0); x++){
+            for(int y = 0; y < board.getBoardSize(1); y++){
+                if(board.getCell(x, y).isAlive()){
                     dbuf.putInt(1);
                 }else{
                     dbuf.putInt(0);

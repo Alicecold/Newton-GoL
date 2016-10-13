@@ -27,6 +27,13 @@ public class Board {
         return cells[x][y];
     }
     
+    public int getBoardSize(int dimension){
+        if(dimension == 0)
+            return cells.length;
+        else
+            return cells[0].length;
+    }
+    
     //Generates random cells on the grid
     public void generate(){
         reset();

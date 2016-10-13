@@ -21,13 +21,22 @@ public class GUIGrid extends javax.swing.JFrame {
     Image offScImg;
 
     Timer time;
-    public static Board board = new Board(height, width);
+    private static Board board = new Board(height, width);
     private static boolean shouldChangeSize = false, shouldGenerate = false;
 
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
         deadCellField.setText("" + ((width * height) - board.getNumberOfAliveCells()));
     }
+    
+    public static Board getBoard(){
+        return board;
+    }
+    
+    public static void setBoard(Board in){
+        board = in;
+    }
+    
     public static void setGridSize(int w, int h){
         width = w;
         height = h;
