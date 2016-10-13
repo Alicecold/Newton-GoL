@@ -155,7 +155,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="generateButon">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generera"/>
+            <Property name="text" type="java.lang.String" value="Generate"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateButonActionPerformed"/>
@@ -170,7 +170,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Storlek p&#xe5; br&#xe4;dan"/>
+        <Property name="text" type="java.lang.String" value="Boardsize"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="loadFromFileButton">

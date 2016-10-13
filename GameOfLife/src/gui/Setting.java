@@ -69,7 +69,7 @@ public class Setting extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        generateButon.setText("Generera");
+        generateButon.setText("Generate");
         generateButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateButonActionPerformed(evt);
@@ -99,7 +99,7 @@ public class Setting extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Storlek på brädan");
+        jLabel1.setText("Boardsize");
 
         loadFromFileButton.setText("Load from file");
         loadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class Setting extends javax.swing.JDialog {
             System.err.println("IOException when loading file! Shuting down...");
             System.exit(1);
         } catch (NullPointerException ex2){
-            System.err.println("no file choosed");
+            System.err.println("No file choosed");
         }
     }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
