@@ -14,16 +14,21 @@ public class Setting extends javax.swing.JDialog {
         initComponents();
     }
     
+    
+    
     private void setGridSize(){
         String itemText = (String)comboBox.getSelectedItem();
+        
         if (itemText.equals("50 x 25")){
             GUIGrid.setGridSize(50, 25);
         }
         if (itemText.equals("100 x 50")){
             GUIGrid.setGridSize(100, 50);
+            
         }
         if (itemText.equals("200 x 100")){
             GUIGrid.setGridSize(200, 100);
+            
         }
         
         GUIGrid.setShouldChangeSize(true);
@@ -195,7 +200,6 @@ public class Setting extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void generateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButonActionPerformed
-        
         GUIGrid.setShouldGenerate(setRndCellsCheckBox.isSelected());
         if (setRndCellsCheckBox.isSelected()){
             setGridSize();
