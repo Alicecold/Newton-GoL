@@ -9,7 +9,6 @@ import java.io.IOException;
  */
 public class Setting extends javax.swing.JDialog {
     
-    public static boolean plzGenerate = false, plzSize = false;
     public Setting(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -26,7 +25,8 @@ public class Setting extends javax.swing.JDialog {
         if (itemText.equals("200 x 100")){
             GUIGrid.setGridSize(200, 100);
         }
-        plzSize = true;
+        
+        GUIGrid.setShouldChangeSize(true);
     }
     
     private void forceGridSize(int x, int y){
@@ -196,7 +196,7 @@ public class Setting extends javax.swing.JDialog {
 
     private void generateButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButonActionPerformed
         
-        plzGenerate = setRndCellsCheckBox.isSelected();
+        GUIGrid.setShouldGenerate(setRndCellsCheckBox.isSelected());
         if (setRndCellsCheckBox.isSelected()){
             setGridSize();
             setVisible(false);

@@ -22,6 +22,7 @@ public class GUIGrid extends javax.swing.JFrame {
 
     Timer time;
     public static Board board = new Board(height, width);
+    private static boolean shouldChangeSize = false, shouldGenerate = false;
 
     private void updateFields(){
         livingCellField.setText("" + board.getNumberOfAliveCells());
@@ -35,22 +36,27 @@ public class GUIGrid extends javax.swing.JFrame {
     public void updateBoardSize(){
         board = new Board(height,width);
     }
+    
+    public static void setShouldChangeSize(boolean should){
+        shouldChangeSize = should;
+    }
+    public static void setShouldGenerate(boolean should){
+        shouldGenerate = should;
+    }
     public GUIGrid() {
         initComponents();
         this.setTitle("Game Of Life v.1.0.1");
         time = new javax.swing.Timer(fps, new ActionListener() {    
             @Override
             public void actionPerformed(ActionEvent evt) {
-                //PLEASE FIX THE NAMES
-                if(Setting.plzSize){
+                if(shouldChangeSize){
                         updateBoardSize();
-                        Setting.plzSize = false;
+                        shouldChangeSize = false;
                 }
-                //PLEASE FIX THE NAMES
-                if(Setting.plzGenerate){
+                if(shouldGenerate){
                         updateBoardSize();
                         board.generate();
-                        Setting.plzGenerate = false;
+                        shouldGenerate = false;
                 }
                 updateFields();
                 gridColor();
