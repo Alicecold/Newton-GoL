@@ -6,22 +6,30 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 /**
- * @author Jacob ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
+ * @author Jacob Ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
  */
 public class GUIGrid extends javax.swing.JFrame {
     
     boolean play = false;
+    
     private static final Color ALIVE_COLOR = new Color(5, 83, 197),
                                 DEAD_COLOR = new Color(58, 70, 89),
                                 GRID_COLOR = new Color(5, 21, 64);
+    
     private static int width = 50, 
                        height = 25;
+    
+    //Speed at the beginning
     private int fps = 1015;
+    
     Graphics offScreenGraph;
     Image offScImg;
+    
 
     Timer time;
     private static Board board = new Board(height, width);
+    
+    //For updating the board.
     private static boolean shouldChangeSize = false, shouldGenerate = false;
 
     private void updateFields(){
@@ -52,6 +60,7 @@ public class GUIGrid extends javax.swing.JFrame {
     public static void setShouldGenerate(boolean should){
         shouldGenerate = should;
     }
+    
     public GUIGrid() {
         initComponents();
         this.setTitle("Game Of Life v.1.0.1");

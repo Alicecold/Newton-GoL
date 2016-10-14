@@ -12,8 +12,7 @@ import java.nio.file.Path;
 import javax.swing.JFileChooser;
 
 /**
- *
- * @author alice
+ * @author Alice Darner
  */
 public final class Filehandler {
     

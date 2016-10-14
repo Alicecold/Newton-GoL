@@ -4,22 +4,18 @@
  */
 package gameoflife;
 
-// Add your name below once you start working on a class :)
-import gui.*; //This is how you do it! /Alice
+
+import gui.*;
 /**
- *  
- * @author Alice Darner
+ * @author Jacob Ahlberg, Alice Darner, Viktor Aoun, Shaon Ahmed.
  */
 public class GameOfLife {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args)  {
-        //gridUI ui = new gridUI();
         
-        GUIGrid ui = new GUIGrid();// This is how you do it! / Alice ('w')
-        ui.setVisible(true); //I copied Jacobs file to the correct folder, so that everything that Jacob made is correctly useable :)
+        //Create the GUI and sets it visible        
+        GUIGrid ui = new GUIGrid();
+        ui.setVisible(true);
         
     }
     
